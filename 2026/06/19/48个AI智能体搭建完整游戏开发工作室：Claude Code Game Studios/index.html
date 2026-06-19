@@ -1,0 +1,1457 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios | 呆呆敲代码的小Y</title><meta name="author" content="呆呆敲代码的小Y"><meta name="copyright" content="呆呆敲代码的小Y"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言 在AI能力指数级跃升的今天，我们不再满足于让大模型充当单一的对话助手。 于是诞生了很多提效的实用工具，比如本文的主角： Claude Code Game Studios，一个完全由Claude模型驱动的虚拟游戏工作室。 在这个工具中，Opus、Sonnet 与 Haiku 分别扮演总监、部门负责人与一线专家，通过清晰的层级协作与角色分工，模拟真实游戏开发的完整流程。 这不仅是一次对AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios">
+<meta property="og:url" content="https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/48%E4%B8%AAAI%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%95%B4%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E5%AE%A4%EF%BC%9AClaude%20Code%20Game%20Studios/index.html">
+<meta property="og:site_name" content="呆呆敲代码的小Y">
+<meta property="og:description" content="前言 在AI能力指数级跃升的今天，我们不再满足于让大模型充当单一的对话助手。 于是诞生了很多提效的实用工具，比如本文的主角： Claude Code Game Studios，一个完全由Claude模型驱动的虚拟游戏工作室。 在这个工具中，Opus、Sonnet 与 Haiku 分别扮演总监、部门负责人与一线专家，通过清晰的层级协作与角色分工，模拟真实游戏开发的完整流程。 这不仅是一次对AI">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gody-98.github.io/XiaoY_Web_Hexo/img/avatar.jpg">
+<meta property="article:published_time" content="2026-06-19T10:51:49.000Z">
+<meta property="article:modified_time" content="2026-06-19T11:57:29.250Z">
+<meta property="article:author" content="呆呆敲代码的小Y">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Claude">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gody-98.github.io/XiaoY_Web_Hexo/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios",
+  "url": "https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/48%E4%B8%AAAI%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%95%B4%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E5%AE%A4%EF%BC%9AClaude%20Code%20Game%20Studios/",
+  "image": "https://gody-98.github.io/XiaoY_Web_Hexo/img/avatar.jpg",
+  "datePublished": "2026-06-19T10:51:49.000Z",
+  "dateModified": "2026-06-19T11:57:29.250Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "呆呆敲代码的小Y",
+      "url": "https://gody-98.github.io/XiaoY_Web_Hexo"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/XiaoY_Web_Hexo/XiaoY_Web_Hexo/img/favicon.png"><link rel="canonical" href="https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/48%E4%B8%AAAI%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%95%B4%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E5%AE%A4%EF%BC%9AClaude%20Code%20Game%20Studios/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/XiaoY_Web_Hexo/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/XiaoY_Web_Hexo/',
+  algolia: undefined,
+  localSearch: {"path":"/XiaoY_Web_Hexo/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/XiaoY_Web_Hexo/img/avatar.jpg" onerror="this.onerror=null;this.src='/XiaoY_Web_Hexo/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/XiaoY_Web_Hexo/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/XiaoY_Web_Hexo/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/XiaoY_Web_Hexo/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/archives/"><i class="fa-fw fas fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/XiaoY_Web_Hexo/img/wallpaper/AI%E7%BB%98%E7%94%BB%20%E5%B8%85%E6%B0%94%E7%9A%84%E6%9C%BA%E7%94%B2%E5%B0%91%E5%A5%B34K%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%9B%BE%E7%BD%91.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/XiaoY_Web_Hexo/"><span class="site-name">呆呆敲代码的小Y</span></a><a class="nav-page-title" href="/XiaoY_Web_Hexo/"><span class="site-name">48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/archives/"><i class="fa-fw fas fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-19T10:51:49.000Z" title="发表于 2026-06-19 18:51:49">2026-06-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-19T11:57:29.250Z" title="更新于 2026-06-19 19:57:29">2026-06-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/XiaoY_Web_Hexo/categories/AI/">AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><img src="/XiaoY_Web_Hexo/images/shared/138_4ea0ad75b9c145e5ba7d219b7e425099.png" alt="请添加图片描述"></p>
+<p><img src="/XiaoY_Web_Hexo/images/shared/019_2fa4e7405f6f4e5ab17e63847148584a.gif" alt="请添加图片描述"></p>
+<hr>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li>在AI能力指数级跃升的今天，我们不再满足于让大模型充当单一的<strong>对话助手</strong>。</li>
+<li>于是诞生了很多提效的实用工具，比如本文的主角： <code>Claude Code Game Studios</code>，一个完全由Claude模型驱动的虚拟游戏工作室。</li>
+<li>在这个工具中，Opus、Sonnet 与 Haiku 分别扮演总监、部门负责人与一线专家，通过清晰的层级协作与角色分工，模拟真实游戏开发的完整流程。</li>
+<li>这不仅是一次对AI组织能力的实验，更是一场关于<strong>AI原生团队</strong>如何高效创造的前瞻性探索。</li>
+</ul>
+<hr>
+<h1 id="48个AI智能体搭建完整游戏开发工作室：Claude-Code-Game-Studios"><a href="#48个AI智能体搭建完整游戏开发工作室：Claude-Code-Game-Studios" class="headerlink" title="48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios"></a>48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios</h1><h2 id="一、Claude-Code-Game-Studios-使用指南"><a href="#一、Claude-Code-Game-Studios-使用指南" class="headerlink" title="一、Claude Code Game Studios 使用指南"></a>一、Claude Code Game Studios 使用指南</h2><h3 id="1-1-项目概述"><a href="#1-1-项目概述" class="headerlink" title="1.1 项目概述"></a>1.1 项目概述</h3><blockquote>
+<p>将单个 Claude Code 会话转变为完整的游戏开发工作室 49 个专业代理 · 72 个技能命令 · 一支协调的 AI 团队</p>
+</blockquote>
+<p><strong>Claude Code Game Studios</strong> 是一个为 Claude Code 设计的游戏开发工作室模板。它将单个 AI 助手转变为一个结构化的游戏开发团队，包含：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>数量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>代理 (Agents)</strong></td>
+<td>49</td>
+<td>跨越设计、程序、美术、音频、叙事、QA 和制作的专业子代理</td>
+</tr>
+<tr>
+<td><strong>技能 (Skills)</strong></td>
+<td>72</td>
+<td>覆盖每个工作流阶段的斜杠命令 (<code>/start</code>, <code>/design-system</code>, <code>/dev-story</code> 等)</td>
+</tr>
+<tr>
+<td><strong>钩子 (Hooks)</strong></td>
+<td>12</td>
+<td>自动化验证：提交检查、资源验证、会话生命周期、代理审计跟踪</td>
+</tr>
+<tr>
+<td><strong>规则 (Rules)</strong></td>
+<td>11</td>
+<td>基于路径的编码标准，自动应用于 gameplay、engine、AI、UI、network 代码</td>
+</tr>
+<tr>
+<td><strong>模板 (Templates)</strong></td>
+<td>39</td>
+<td>GDD、UX 规格、ADR、冲刺计划、HUD 设计、无障碍等文档模板</td>
+</tr>
+</tbody></table>
+<h3 id="1-2-为什么需要这个项目"><a href="#1-2-为什么需要这个项目" class="headerlink" title="1.2 为什么需要这个项目"></a>1.2 为什么需要这个项目</h3><p><strong>问题</strong>：使用 AI 独立开发游戏很强大，但单个聊天会话没有结构。没人阻止你硬编码魔法数字、跳过设计文档、或编写面条代码。没有 QA 检查、没有设计评审、没人问”这真的符合游戏愿景吗？”</p>
+<p><strong>解决方案</strong>：Claude Code Game Studios 为你的 AI 会话提供真实工作室的结构。你将获得 49 个按工作室层级组织的专业代理——守护愿景的总监、拥有自己领域的部门负责人、以及做具体工作的专家。每个代理都有明确的职责、升级路径和质量门控。</p>
+<p><strong>结果</strong>：你仍然做出每个决定，但现在有一个团队提出正确的问题、及早发现错误、并从第一次头脑风暴到发布都保持项目有序。</p>
+<h3 id="1-3-使用说明及下载"><a href="#1-3-使用说明及下载" class="headerlink" title="1.3 使用说明及下载"></a>1.3 使用说明及下载</h3><ul>
+<li>GitHub下载地址：<a target="_blank" rel="noopener" href="https://github.com/Donchitos/Claude-Code-Game-Studios">https://github.com/Donchitos/Claude-Code-Game-Studios</a></li>
+<li>CSDN下载地址：<a target="_blank" rel="noopener" href="https://download.csdn.net/download/zhangay1998/92806742">Claude Code Game Studios</a></li>
+<li>白嫖地址：VX搜我名字，回复【素材资源】</li>
+</ul>
+<blockquote>
+<p><strong>温馨提示</strong><br>虽然这个工具很强，但是建议刚开始使用的时候选择一些超轻量的小游戏练练手，搞明白整个工作流之后再正式构思自己的游戏创意，这一点很关键！</p>
+</blockquote>
+<hr>
+<h2 id="二、核心功能"><a href="#二、核心功能" class="headerlink" title="二、核心功能"></a>二、核心功能</h2><h3 id="2-1-结构化代理系统"><a href="#2-1-结构化代理系统" class="headerlink" title="2.1 结构化代理系统"></a>2.1 结构化代理系统</h3><p>代理按三个层级组织，模拟真实工作室的运作方式：<br><img src="/XiaoY_Web_Hexo/images/ai/128_f3686c7c2d364991bd0bb2c704114fa8.png" alt="在这里插入图片描述"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">第一层 — 总监 (Opus 模型)</span><br><span class="line">  creative-director    technical-director    producer</span><br><span class="line"></span><br><span class="line">第二层 — 部门负责人 (Sonnet 模型)</span><br><span class="line">  game-designer        lead-programmer       art-director</span><br><span class="line">  audio-director       narrative-director    qa-lead</span><br><span class="line">  release-manager      localization-lead</span><br><span class="line"></span><br><span class="line">第三层 — 专家 (Sonnet/Haiku 模型)</span><br><span class="line">  gameplay-programmer  engine-programmer     ai-programmer</span><br><span class="line">  network-programmer   tools-programmer      ui-programmer</span><br><span class="line">  systems-designer     level-designer        economy-designer</span><br><span class="line">  technical-artist     sound-designer        writer</span><br><span class="line">  world-builder        ux-designer           prototyper</span><br><span class="line">  performance-analyst  devops-engineer       analytics-engineer</span><br><span class="line">  security-engineer    qa-tester             accessibility-specialist</span><br><span class="line">  live-ops-designer    community-manager</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-引擎专家系统"><a href="#2-2-引擎专家系统" class="headerlink" title="2.2 引擎专家系统"></a>2.2 引擎专家系统</h3><p>模板包含三大主流引擎的代理集合。选择匹配你项目的集合：</p>
+<table>
+<thead>
+<tr>
+<th>引擎</th>
+<th>主代理</th>
+<th>子专家</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Godot 4</strong></td>
+<td><code>godot-specialist</code></td>
+<td>GDScript、Shaders、GDExtension</td>
+</tr>
+<tr>
+<td><strong>Unity</strong></td>
+<td><code>unity-specialist</code></td>
+<td>DOTS&#x2F;ECS、Shaders&#x2F;VFX、Addressables、UI Toolkit</td>
+</tr>
+<tr>
+<td><strong>Unreal Engine 5</strong></td>
+<td><code>unreal-specialist</code></td>
+<td>GAS、Blueprints、Replication、UMG&#x2F;CommonUI</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-协作协议"><a href="#2-3-协作协议" class="headerlink" title="2.3 协作协议"></a>2.3 协作协议</h3><p>这是<strong>协作系统</strong>，不是自动执行系统。每个代理遵循严格的协作协议：</p>
+<ol>
+<li><strong>询问</strong> — 代理在提出解决方案前先提问</li>
+<li><strong>展示选项</strong> — 代理展示 2-4 个选项及优缺点</li>
+<li><strong>你决定</strong> — 用户总是做出决定</li>
+<li><strong>起草</strong> — 代理在最终确定前展示工作</li>
+<li><strong>批准</strong> — 没有你的批准，什么都不写入</li>
+</ol>
+<p><strong>你保持控制权</strong>。代理提供结构和专业知识，而不是自主权。</p>
+<h3 id="2-4-自动化安全"><a href="#2-4-自动化安全" class="headerlink" title="2.4 自动化安全"></a>2.4 自动化安全</h3><p><strong>钩子</strong>在每次会话自动运行：</p>
+<table>
+<thead>
+<tr>
+<th>钩子</th>
+<th>触发时机</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>validate-commit.sh</code></td>
+<td>git commit 前</td>
+<td>检查硬编码值、TODO 格式、JSON 有效性、设计文档章节</td>
+</tr>
+<tr>
+<td><code>validate-push.sh</code></td>
+<td>git push 前</td>
+<td>推送到受保护分支时发出警告</td>
+</tr>
+<tr>
+<td><code>validate-assets.sh</code></td>
+<td>写入&#x2F;编辑资源文件后</td>
+<td>验证命名约定和 JSON 结构</td>
+</tr>
+<tr>
+<td><code>session-start.sh</code></td>
+<td>会话开始时</td>
+<td>显示当前分支和最近提交以定位</td>
+</tr>
+<tr>
+<td><code>detect-gaps.sh</code></td>
+<td>会话开始时</td>
+<td>检测新项目（建议 <code>/start</code>）和缺失的设计文档</td>
+</tr>
+<tr>
+<td><code>pre-compact.sh</code></td>
+<td>上下文压缩前</td>
+<td>保存会话进度笔记</td>
+</tr>
+<tr>
+<td><code>post-compact.sh</code></td>
+<td>上下文压缩后</td>
+<td>提醒 Claude 从 <code>active.md</code> 恢复会话状态</td>
+</tr>
+<tr>
+<td><code>notify.sh</code></td>
+<td>通知事件</td>
+<td>通过 PowerShell 显示 Windows 通知</td>
+</tr>
+<tr>
+<td><code>session-stop.sh</code></td>
+<td>会话结束时</td>
+<td>将 <code>active.md</code> 归档到会话日志并记录 git 活动</td>
+</tr>
+<tr>
+<td><code>log-agent.sh</code></td>
+<td>代理启动时</td>
+<td>审计跟踪开始 — 记录子代理调用</td>
+</tr>
+<tr>
+<td><code>log-agent-stop.sh</code></td>
+<td>代理停止时</td>
+<td>审计跟踪结束 — 完成子代理记录</td>
+</tr>
+<tr>
+<td><code>validate-skill-change.sh</code></td>
+<td>技能文件修改后</td>
+<td>修改 <code>.claude/skills/</code> 后建议运行 <code>/skill-test</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="三、快速开始"><a href="#三、快速开始" class="headerlink" title="三、快速开始"></a>三、快速开始</h2><h3 id="3-1-前置要求"><a href="#3-1-前置要求" class="headerlink" title="3.1 前置要求"></a>3.1 前置要求</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> (<code>npm install -g @anthropic-ai/claude-code</code>)</li>
+</ul>
+<p>所有钩子在没有可选工具时会失败 — 不会破坏任何东西，只是失去验证功能。</p>
+<h3 id="3-2-安装步骤"><a href="#3-2-安装步骤" class="headerlink" title="3.2 安装步骤"></a>3.2 安装步骤</h3><ol>
+<li><p><strong>克隆或使用模板</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Donchitos/Claude-Code-Game-Studios.git my-game</span><br><span class="line"><span class="built_in">cd</span> my-game</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>打开 Claude Code</strong> 并启动会话：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>运行 <code>/start</code></strong> — 系统询问你在哪里（没有想法、模糊概念、清晰设计、现有工作）并引导你到正确的工作流。不做假设。</p>
+<p>如果你已经知道需要什么，也可以直接跳到特定技能：</p>
+<ul>
+<li><code>/brainstorm</code> — 从头探索游戏创意</li>
+<li><code>/setup-engine godot 4.6</code> — 如果你已经知道，配置你的引擎</li>
+<li><code>/project-stage-detect</code> — 分析现有项目</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="四、工作室层级架构"><a href="#四、工作室层级架构" class="headerlink" title="四、工作室层级架构"></a>四、工作室层级架构</h2><p><strong>1.第一层 — 领导代理 (Opus)</strong></p>
+<table>
+<thead>
+<tr>
+<th>代理</th>
+<th>领域</th>
+<th>使用时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>creative-director</code></td>
+<td>高层愿景</td>
+<td>重大创意决策、支柱冲突、基调&#x2F;方向</td>
+</tr>
+<tr>
+<td><code>technical-director</code></td>
+<td>技术愿景</td>
+<td>架构决策、技术栈选择、性能策略</td>
+</tr>
+<tr>
+<td><code>producer</code></td>
+<td>制作管理</td>
+<td>冲刺计划、里程碑跟踪、风险管理、协调</td>
+</tr>
+</tbody></table>
+<p><strong>2.第二层 — 部门负责人代理 (Sonnet)</strong></p>
+<table>
+<thead>
+<tr>
+<th>代理</th>
+<th>领域</th>
+<th>使用时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>game-designer</code></td>
+<td>游戏设计</td>
+<td>机制、系统、进度、经济、平衡</td>
+</tr>
+<tr>
+<td><code>lead-programmer</code></td>
+<td>代码架构</td>
+<td>系统设计、代码审查、API 设计、重构</td>
+</tr>
+<tr>
+<td><code>art-director</code></td>
+<td>视觉方向</td>
+<td>风格指南、美术圣经、资源标准、UI&#x2F;UX 方向</td>
+</tr>
+<tr>
+<td><code>audio-director</code></td>
+<td>音频方向</td>
+<td>音乐方向、声音调色板、音频实现策略</td>
+</tr>
+<tr>
+<td><code>narrative-director</code></td>
+<td>故事和写作</td>
+<td>故事弧线、世界构建、角色设计、对话策略</td>
+</tr>
+<tr>
+<td><code>qa-lead</code></td>
+<td>质量保证</td>
+<td>测试策略、bug 分类、发布准备、回归规划</td>
+</tr>
+<tr>
+<td><code>release-manager</code></td>
+<td>发布管道</td>
+<td>构建管理、版本控制、变更日志、部署、回滚</td>
+</tr>
+<tr>
+<td><code>localization-lead</code></td>
+<td>国际化</td>
+<td>字符串外化、翻译管道、区域设置测试</td>
+</tr>
+</tbody></table>
+<p><strong>3.第三层 — 专家代理 (Sonnet 或 Haiku)</strong></p>
+<table>
+<thead>
+<tr>
+<th>代理</th>
+<th>领域</th>
+<th>模型</th>
+<th>使用时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>systems-designer</code></td>
+<td>系统设计</td>
+<td>Sonnet</td>
+<td>具体机制实现、公式设计、循环</td>
+</tr>
+<tr>
+<td><code>level-designer</code></td>
+<td>关卡设计</td>
+<td>Sonnet</td>
+<td>关卡布局、节奏、遭遇设计、流程</td>
+</tr>
+<tr>
+<td><code>economy-designer</code></td>
+<td>经济&#x2F;平衡</td>
+<td>Sonnet</td>
+<td>资源经济、战利品表、进度曲线</td>
+</tr>
+<tr>
+<td><code>gameplay-programmer</code></td>
+<td>游戏玩法代码</td>
+<td>Sonnet</td>
+<td>功能实现、游戏玩法系统代码</td>
+</tr>
+<tr>
+<td><code>engine-programmer</code></td>
+<td>引擎系统</td>
+<td>Sonnet</td>
+<td>核心引擎、渲染、物理、内存管理</td>
+</tr>
+<tr>
+<td><code>ai-programmer</code></td>
+<td>AI 系统</td>
+<td>Sonnet</td>
+<td>行为树、寻路、NPC 逻辑、状态机</td>
+</tr>
+<tr>
+<td><code>network-programmer</code></td>
+<td>网络</td>
+<td>Sonnet</td>
+<td>网络代码、复制、延迟补偿、匹配</td>
+</tr>
+<tr>
+<td><code>tools-programmer</code></td>
+<td>开发工具</td>
+<td>Sonnet</td>
+<td>编辑器扩展、管道工具、调试工具</td>
+</tr>
+<tr>
+<td><code>ui-programmer</code></td>
+<td>UI 实现</td>
+<td>Sonnet</td>
+<td>UI 框架、屏幕、小部件、数据绑定</td>
+</tr>
+<tr>
+<td><code>technical-artist</code></td>
+<td>技术美术</td>
+<td>Sonnet</td>
+<td>着色器、VFX、优化、美术管道工具</td>
+</tr>
+<tr>
+<td><code>sound-designer</code></td>
+<td>音效设计</td>
+<td>Haiku</td>
+<td>SFX 设计文档、音频事件列表、混音笔记</td>
+</tr>
+<tr>
+<td><code>writer</code></td>
+<td>对话&#x2F;传说</td>
+<td>Sonnet</td>
+<td>对话写作、传说条目、物品描述</td>
+</tr>
+<tr>
+<td><code>world-builder</code></td>
+<td>世界&#x2F;传说设计</td>
+<td>Sonnet</td>
+<td>世界规则、派系设计、历史、地理</td>
+</tr>
+<tr>
+<td><code>qa-tester</code></td>
+<td>测试执行</td>
+<td>Haiku</td>
+<td>编写测试用例、bug 报告、测试清单</td>
+</tr>
+<tr>
+<td><code>performance-analyst</code></td>
+<td>性能</td>
+<td>Sonnet</td>
+<td>性能分析、优化建议、内存分析</td>
+</tr>
+<tr>
+<td><code>devops-engineer</code></td>
+<td>构建&#x2F;部署</td>
+<td>Haiku</td>
+<td>CI&#x2F;CD、构建脚本、版本控制工作流</td>
+</tr>
+<tr>
+<td><code>analytics-engineer</code></td>
+<td>遥测</td>
+<td>Sonnet</td>
+<td>事件跟踪、仪表板、A&#x2F;B 测试设计</td>
+</tr>
+<tr>
+<td><code>ux-designer</code></td>
+<td>UX 流程</td>
+<td>Sonnet</td>
+<td>用户流程、线框图、无障碍、输入处理</td>
+</tr>
+<tr>
+<td><code>prototyper</code></td>
+<td>快速原型</td>
+<td>Sonnet</td>
+<td>一次性原型、机制测试、可行性验证</td>
+</tr>
+<tr>
+<td><code>security-engineer</code></td>
+<td>安全</td>
+<td>Sonnet</td>
+<td>反作弊、漏洞预防、存档加密、网络安全</td>
+</tr>
+<tr>
+<td><code>accessibility-specialist</code></td>
+<td>无障碍</td>
+<td>Haiku</td>
+<td>WCAG 合规、色盲模式、重映射、文本缩放</td>
+</tr>
+<tr>
+<td><code>live-ops-designer</code></td>
+<td>持续运营</td>
+<td>Sonnet</td>
+<td>赛季、活动、战斗通行证、留存、实时经济</td>
+</tr>
+<tr>
+<td><code>community-manager</code></td>
+<td>社区</td>
+<td>Haiku</td>
+<td>补丁说明、玩家反馈、危机沟通、社区健康</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、Skill技能命令系统"><a href="#五、Skill技能命令系统" class="headerlink" title="五、Skill技能命令系统"></a>五、Skill技能命令系统</h2><p>在 Claude Code 中输入 <code>/</code> 访问所有 72 个技能：</p>
+<p><strong>1.入门与导航</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/start</code></td>
+<td>首次入门 — 询问你在哪里，然后引导你到正确的工作流</td>
+</tr>
+<tr>
+<td><code>/help</code></td>
+<td>上下文感知的”下一步我该做什么？” — 读取当前阶段并显示所需的下一步</td>
+</tr>
+<tr>
+<td><code>/project-stage-detect</code></td>
+<td>完整项目审计 — 检测阶段、识别存在差距、推荐下一步</td>
+</tr>
+<tr>
+<td><code>/setup-engine</code></td>
+<td>配置引擎 + 版本，检测知识差距，填充版本感知的参考文档</td>
+</tr>
+<tr>
+<td><code>/adopt</code></td>
+<td>棕地格式审计 — 检查现有 GDD&#x2F;ADR&#x2F;故事的内部结构，生成迁移计划</td>
+</tr>
+</tbody></table>
+<p><strong>2.游戏设计</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/brainstorm</code></td>
+<td>使用专业工作室方法（MDA、SDT、Bartle、动词优先）进行引导式创意</td>
+</tr>
+<tr>
+<td><code>/map-systems</code></td>
+<td>将游戏概念分解为系统，映射依赖关系，优先排序设计顺序</td>
+</tr>
+<tr>
+<td><code>/design-system</code></td>
+<td>引导式、逐章节的 GDD 编写（单个游戏系统）</td>
+</tr>
+<tr>
+<td><code>/quick-design</code></td>
+<td>小变更的轻量级设计规格 — 调整、微调、小添加</td>
+</tr>
+<tr>
+<td><code>/review-all-gdds</code></td>
+<td>跨越所有设计文档的 GDD 一致性和游戏设计整体性审查</td>
+</tr>
+<tr>
+<td><code>/propagate-design-change</code></td>
+<td>当 GDD 修订时，找到受影响的 ADR 并生成影响报告</td>
+</tr>
+</tbody></table>
+<p><strong>3.UX 与界面设计</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/ux-design</code></td>
+<td>引导式逐章节 UX 规格编写（屏幕&#x2F;流程、HUD 或模式库）</td>
+</tr>
+<tr>
+<td><code>/ux-review</code></td>
+<td>验证 UX 规格的 GDD 对齐、无障碍和模式合规性</td>
+</tr>
+</tbody></table>
+<p><strong>4.架构</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/create-architecture</code></td>
+<td>主架构文档的引导式编写</td>
+</tr>
+<tr>
+<td><code>/architecture-decision</code></td>
+<td>创建架构决策记录 (ADR)</td>
+</tr>
+<tr>
+<td><code>/architecture-review</code></td>
+<td>验证所有 ADR 的完整性、依赖排序和 GDD 覆盖</td>
+</tr>
+<tr>
+<td><code>/create-control-manifest</code></td>
+<td>从接受的 ADR 生成扁平程序员规则表</td>
+</tr>
+</tbody></table>
+<p><strong>5.故事与冲刺</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/create-epics</code></td>
+<td>将 GDD + ADR 转换为史诗 — 每个架构模块一个</td>
+</tr>
+<tr>
+<td><code>/create-stories</code></td>
+<td>将单个史诗分解为可实现的故事文件</td>
+</tr>
+<tr>
+<td><code>/dev-story</code></td>
+<td>读取故事并实现它 — 路由到正确的程序员代理</td>
+</tr>
+<tr>
+<td><code>/sprint-plan</code></td>
+<td>生成或更新冲刺计划；初始化 sprint-status.yaml</td>
+</tr>
+<tr>
+<td><code>/sprint-status</code></td>
+<td>快速 30 行冲刺快照（读取 sprint-status.yaml）</td>
+</tr>
+<tr>
+<td><code>/story-readiness</code></td>
+<td>在提取前验证故事是否准备好实现 (READY&#x2F;NEEDS WORK&#x2F;BLOCKED)</td>
+</tr>
+<tr>
+<td><code>/story-done</code></td>
+<td>实现后的 8 阶段完成审查；更新故事文件，显示下一个故事</td>
+</tr>
+<tr>
+<td><code>/estimate</code></td>
+<td>结构化工作量估算，包含复杂性、依赖关系和风险分解</td>
+</tr>
+</tbody></table>
+<p><strong>6.审查与分析</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/design-review</code></td>
+<td>审查游戏设计文档的完整性和一致性</td>
+</tr>
+<tr>
+<td><code>/code-review</code></td>
+<td>文件或变更集的架构代码审查</td>
+</tr>
+<tr>
+<td><code>/balance-check</code></td>
+<td>分析游戏平衡数据、公式和配置 — 标记异常值</td>
+</tr>
+<tr>
+<td><code>/asset-audit</code></td>
+<td>审计资源的命名约定、文件大小预算和管道合规性</td>
+</tr>
+<tr>
+<td><code>/content-audit</code></td>
+<td>审计 GDD 指定的内容计数与实现的内容</td>
+</tr>
+<tr>
+<td><code>/scope-check</code></td>
+<td>分析功能或冲刺范围与原始计划，标记范围蔓延</td>
+</tr>
+<tr>
+<td><code>/perf-profile</code></td>
+<td>结构化性能分析，包含瓶颈识别</td>
+</tr>
+<tr>
+<td><code>/tech-debt</code></td>
+<td>扫描、跟踪、优先排序和报告技术债务</td>
+</tr>
+<tr>
+<td><code>/gate-check</code></td>
+<td>验证在开发阶段之间推进的准备情况 (PASS&#x2F;CONCERNS&#x2F;FAIL)</td>
+</tr>
+<tr>
+<td><code>/consistency-check</code></td>
+<td>扫描所有 GDD 与实体注册表以检测跨文档不一致</td>
+</tr>
+</tbody></table>
+<p><strong>7.QA 与测试</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/qa-plan</code></td>
+<td>为冲刺或功能生成 QA 测试计划</td>
+</tr>
+<tr>
+<td><code>/smoke-check</code></td>
+<td>在 QA 交接前运行关键路径冒烟测试门控</td>
+</tr>
+<tr>
+<td><code>/soak-test</code></td>
+<td>为扩展游戏会话生成浸泡测试协议</td>
+</tr>
+<tr>
+<td><code>/regression-suite</code></td>
+<td>将测试覆盖率映射到 GDD 关键路径，识别没有回归测试的已修复 bug</td>
+</tr>
+<tr>
+<td><code>/test-setup</code></td>
+<td>为项目引擎搭建测试框架和 CI&#x2F;CD 管道</td>
+</tr>
+<tr>
+<td><code>/test-helpers</code></td>
+<td>为测试套件生成引擎特定的测试辅助库</td>
+</tr>
+<tr>
+<td><code>/test-evidence-review</code></td>
+<td>测试文件和手动证据文档的质量审查</td>
+</tr>
+<tr>
+<td><code>/test-flakiness</code></td>
+<td>从 CI 运行日志检测非确定性（不稳定）测试</td>
+</tr>
+<tr>
+<td><code>/skill-test</code></td>
+<td>验证技能文件的结构合规性和行为正确性</td>
+</tr>
+</tbody></table>
+<p><strong>8. 制作</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/milestone-review</code></td>
+<td>审查里程碑进度并生成状态报告</td>
+</tr>
+<tr>
+<td><code>/retrospective</code></td>
+<td>运行结构化的冲刺或里程碑回顾</td>
+</tr>
+<tr>
+<td><code>/bug-report</code></td>
+<td>创建结构化的 bug 报告</td>
+</tr>
+<tr>
+<td><code>/bug-triage</code></td>
+<td>读取所有开放的 bug，重新评估优先级与严重性，分配所有者和标签</td>
+</tr>
+<tr>
+<td><code>/reverse-document</code></td>
+<td>从现有实现生成设计或架构文档</td>
+</tr>
+<tr>
+<td><code>/playtest-report</code></td>
+<td>生成结构化的试玩报告或分析现有试玩笔记</td>
+</tr>
+</tbody></table>
+<p><strong>9.发布</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/release-checklist</code></td>
+<td>为当前构建生成并验证发布前检查清单</td>
+</tr>
+<tr>
+<td><code>/launch-checklist</code></td>
+<td>跨越所有部门的完整发布准备验证</td>
+</tr>
+<tr>
+<td><code>/changelog</code></td>
+<td>从 git 提交和冲刺数据自动生成变更日志</td>
+</tr>
+<tr>
+<td><code>/patch-notes</code></td>
+<td>从 git 历史和内部数据生成面向玩家的补丁说明</td>
+</tr>
+<tr>
+<td><code>/hotfix</code></td>
+<td>紧急修复工作流，包含审计跟踪，绕过正常冲刺流程</td>
+</tr>
+</tbody></table>
+<p><strong>10.创意与内容</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/prototype</code></td>
+<td>快速一次性原型以验证机制（放宽标准，隔离工作树）</td>
+</tr>
+<tr>
+<td><code>/onboard</code></td>
+<td>为新贡献者或代理生成上下文入门文档</td>
+</tr>
+<tr>
+<td><code>/localize</code></td>
+<td>本地化工作流：字符串提取、验证、翻译准备</td>
+</tr>
+</tbody></table>
+<p><strong>11.团队编排</strong></p>
+<p>协调多个代理在单个功能区域：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>协调</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/team-combat</code></td>
+<td>game-designer + gameplay-programmer + ai-programmer + technical-artist + sound-designer + qa-tester</td>
+</tr>
+<tr>
+<td><code>/team-narrative</code></td>
+<td>narrative-director + writer + world-builder + level-designer</td>
+</tr>
+<tr>
+<td><code>/team-ui</code></td>
+<td>ux-designer + ui-programmer + art-director + accessibility-specialist</td>
+</tr>
+<tr>
+<td><code>/team-release</code></td>
+<td>release-manager + qa-lead + devops-engineer + producer</td>
+</tr>
+<tr>
+<td><code>/team-polish</code></td>
+<td>performance-analyst + technical-artist + sound-designer + qa-tester</td>
+</tr>
+<tr>
+<td><code>/team-audio</code></td>
+<td>audio-director + sound-designer + technical-artist + gameplay-programmer</td>
+</tr>
+<tr>
+<td><code>/team-level</code></td>
+<td>level-designer + narrative-director + world-builder + art-director + systems-designer + qa-tester</td>
+</tr>
+<tr>
+<td><code>/team-live-ops</code></td>
+<td>live-ops-designer + economy-designer + community-manager + analytics-engineer</td>
+</tr>
+<tr>
+<td><code>/team-qa</code></td>
+<td>qa-lead + qa-tester + gameplay-programmer + producer</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、自动化钩子"><a href="#六、自动化钩子" class="headerlink" title="六、自动化钩子"></a>六、自动化钩子</h2><p>钩子在 <code>.claude/settings.json</code> 中配置并自动触发：</p>
+<ol>
+<li><code>validate-commit.sh</code> — 提交验证</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：<code>git commit</code> 命令</li>
+<li><strong>检查</strong>：<ul>
+<li>设计文档必需章节</li>
+<li>JSON 数据文件有效性</li>
+<li>硬编码值检测</li>
+<li>TODO 格式验证</li>
+</ul>
+</li>
+<li><strong>退出策略</strong>：如果命令不是 <code>git commit</code> 则提前退出</li>
+</ul>
+<ol start="2">
+<li><code>validate-push.sh</code> — 推送验证</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：<code>git push</code> 命令</li>
+<li><strong>检查</strong>：推送到受保护分支（develop&#x2F;main）时警告</li>
+<li><strong>退出策略</strong>：如果命令不是 <code>git push</code> 则提前退出</li>
+</ul>
+<ol start="3">
+<li><code>validate-assets.sh</code> — 资源验证</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：资源文件写入&#x2F;编辑</li>
+<li><strong>检查</strong>：<ul>
+<li>命名约定</li>
+<li>JSON 有效性</li>
+</ul>
+</li>
+<li><strong>路径</strong>：仅检查 <code>assets/</code> 目录中的文件</li>
+</ul>
+<ol start="4">
+<li><code>session-start.sh</code> — 会话开始</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：会话开始</li>
+<li><strong>功能</strong>：<ul>
+<li>加载冲刺上下文</li>
+<li>显示里程碑</li>
+<li>显示 git 活动</li>
+<li>检测并预览活动会话状态文件以恢复</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li><code>detect-gaps.sh</code> — 差距检测</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：会话开始</li>
+<li><strong>功能</strong>：<ul>
+<li>检测新项目（建议 <code>/start</code>）</li>
+<li>检测缺失文档（建议 <code>/reverse-document</code> 或 <code>/project-stage-detect</code>）</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li><code>pre-compact.sh</code> — 压缩前</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：上下文压缩前</li>
+<li><strong>功能</strong>：将会话状态（active.md、修改的文件、WIP 设计文档）转储到对话中以便在总结后保留</li>
+</ul>
+<ol start="7">
+<li><code>post-compact.sh</code> — 压缩后</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：上下文压缩后</li>
+<li><strong>功能</strong>：提醒 Claude 从 <code>active.md</code> 检查点恢复会话状态</li>
+</ul>
+<ol start="8">
+<li><code>notify.sh</code> — 通知</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：通知事件</li>
+<li><strong>功能</strong>：通过 PowerShell 显示 Windows toast 通知</li>
+</ul>
+<ol start="9">
+<li><code>session-stop.sh</code> — 会话停止</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：会话结束</li>
+<li><strong>功能</strong>：<ul>
+<li>总结成就</li>
+<li>更新会话日志</li>
+</ul>
+</li>
+</ul>
+<ol start="10">
+<li><code>log-agent.sh</code> — 代理日志开始</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：代理启动</li>
+<li><strong>功能</strong>：审计跟踪开始 — 记录子代理调用及时间戳</li>
+</ul>
+<ol start="11">
+<li><code>log-agent-stop.sh</code> — 代理日志结束</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：代理停止</li>
+<li><strong>功能</strong>：审计跟踪结束 — 完成子代理记录</li>
+</ul>
+<ol start="12">
+<li><code>validate-skill-change.sh</code> — 技能变更验证</li>
+</ol>
+<ul>
+<li><strong>触发</strong>：技能文件写入&#x2F;编辑</li>
+<li><strong>功能</strong>：修改 <code>.claude/skills/</code> 后建议运行 <code>/skill-test</code></li>
+</ul>
+<hr>
+<h2 id="七、路径规则系统"><a href="#七、路径规则系统" class="headerlink" title="七、路径规则系统"></a>七、路径规则系统</h2><p><code>.claude/rules/</code> 中的规则在编辑匹配路径的文件时自动执行：</p>
+<table>
+<thead>
+<tr>
+<th>规则文件</th>
+<th>路径模式</th>
+<th>执行内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gameplay-code.md</code></td>
+<td><code>src/gameplay/**</code></td>
+<td>数据驱动值、delta time、无 UI 引用</td>
+</tr>
+<tr>
+<td><code>engine-code.md</code></td>
+<td><code>src/core/**</code></td>
+<td>热路径零分配、线程安全、API 稳定性</td>
+</tr>
+<tr>
+<td><code>ai-code.md</code></td>
+<td><code>src/ai/**</code></td>
+<td>性能预算、可调试性、数据驱动参数</td>
+</tr>
+<tr>
+<td><code>network-code.md</code></td>
+<td><code>src/networking/**</code></td>
+<td>服务器权威、版本化消息、安全</td>
+</tr>
+<tr>
+<td><code>ui-code.md</code></td>
+<td><code>src/ui/**</code></td>
+<td>无游戏状态所有权、本地化准备、无障碍</td>
+</tr>
+<tr>
+<td><code>design-docs.md</code></td>
+<td><code>design/gdd/**</code></td>
+<td>必需 8 章节、公式格式、边缘情况</td>
+</tr>
+<tr>
+<td><code>narrative.md</code></td>
+<td><code>design/narrative/**</code></td>
+<td>传说一致性、角色声音、正典级别</td>
+</tr>
+<tr>
+<td><code>data-files.md</code></td>
+<td><code>assets/data/**</code></td>
+<td>JSON 有效性、命名约定、模式规则</td>
+</tr>
+<tr>
+<td><code>test-standards.md</code></td>
+<td><code>tests/**</code></td>
+<td>测试命名、覆盖率要求、fixture 模式</td>
+</tr>
+<tr>
+<td><code>prototype-code.md</code></td>
+<td><code>prototypes/**</code></td>
+<td>放宽标准、README 必需、假设文档化</td>
+</tr>
+<tr>
+<td><code>shader-code.md</code></td>
+<td><code>assets/shaders/**</code></td>
+<td>命名约定、性能目标、跨平台规则</td>
+</tr>
+</tbody></table>
+<h3 id="7-1-gameplay-code-md-—-游戏玩法代码规则"><a href="#7-1-gameplay-code-md-—-游戏玩法代码规则" class="headerlink" title="7.1 gameplay-code.md — 游戏玩法代码规则"></a>7.1 gameplay-code.md — 游戏玩法代码规则</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Gameplay Code Rules</span></span><br><span class="line"></span><br><span class="line"><span class="section">## Data-Driven Values</span></span><br><span class="line"><span class="bullet">-</span> All gameplay values must be externalized to config files</span><br><span class="line"><span class="bullet">-</span> No hardcoded magic numbers in gameplay code</span><br><span class="line"><span class="bullet">-</span> Use dependency injection for config access</span><br><span class="line"></span><br><span class="line"><span class="section">## Delta Time</span></span><br><span class="line"><span class="bullet">-</span> All time-dependent operations must use delta time</span><br><span class="line"><span class="bullet">-</span> Never assume fixed frame rate</span><br><span class="line"></span><br><span class="line"><span class="section">## Separation of Concerns</span></span><br><span class="line"><span class="bullet">-</span> Gameplay code must not directly reference UI components</span><br><span class="line"><span class="bullet">-</span> Use events/signals for gameplay → UI communication</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-design-docs-md-—-设计文档规则"><a href="#7-2-design-docs-md-—-设计文档规则" class="headerlink" title="7.2 design-docs.md — 设计文档规则"></a>7.2 design-docs.md — 设计文档规则</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Design Document Rules</span></span><br><span class="line"></span><br><span class="line"><span class="section">## Required Sections</span></span><br><span class="line">Every GDD must include these 8 sections:</span><br><span class="line"><span class="bullet">1.</span> Overview — one-paragraph summary</span><br><span class="line"><span class="bullet">2.</span> Player Fantasy — intended feeling and experience</span><br><span class="line"><span class="bullet">3.</span> Detailed Rules — unambiguous mechanics</span><br><span class="line"><span class="bullet">4.</span> Formulas — all math defined with variables</span><br><span class="line"><span class="bullet">5.</span> Edge Cases — unusual situations handled</span><br><span class="line"><span class="bullet">6.</span> Dependencies — other systems listed</span><br><span class="line"><span class="bullet">7.</span> Tuning Knobs — configurable values identified</span><br><span class="line"><span class="bullet">8.</span> Acceptance Criteria — testable success conditions</span><br><span class="line"></span><br><span class="line"><span class="section">## Formula Format</span></span><br><span class="line"><span class="bullet">-</span> All formulas must use named variables</span><br><span class="line"><span class="bullet">-</span> Provide example calculations</span><br><span class="line"><span class="bullet">-</span> Document units and ranges</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="八、工作流程（重要）"><a href="#八、工作流程（重要）" class="headerlink" title="八、工作流程（重要）"></a>八、工作流程（重要）</h2><p>项目遵循 7 阶段开发管道：</p>
+<h3 id="阶段-1：概念-Concept"><a href="#阶段-1：概念-Concept" class="headerlink" title="阶段 1：概念 (Concept)"></a>阶段 1：概念 (Concept)</h3><p><strong>目标</strong>：将游戏想法发展为文档化的概念</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li><code>/brainstorm</code> — 使用 MDA、动词优先和玩家心理学框架探索游戏概念</li>
+<li><code>/setup-engine</code> — 配置引擎、固定版本、设置命名约定和性能预算</li>
+<li>游戏概念文档 — 用支柱、MDA 分析和范围层级形式化概念</li>
+<li><code>/design-review</code> — 验证游戏概念（推荐在继续之前）</li>
+<li><code>/art-bible</code> — 编写视觉身份规格（9 章节）</li>
+<li><code>/map-systems</code> — 将概念分解为具有依赖排序和优先级层次的系统</li>
+</ol>
+<p><strong>产出</strong>：</p>
+<ul>
+<li><code>design/gdd/game-concept.md</code></li>
+<li><code>design/art/art-bible.md</code></li>
+<li><code>design/gdd/systems-index.md</code></li>
+</ul>
+<h3 id="阶段-2：系统设计-Systems-Design"><a href="#阶段-2：系统设计-Systems-Design" class="headerlink" title="阶段 2：系统设计 (Systems Design)"></a>阶段 2：系统设计 (Systems Design)</h3><p><strong>目标</strong>：为系统索引中的每个系统编写 GDD</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li><code>/design-system</code> — 编写每个系统的 GDD（引导式、逐章节）- 每个系统运行一次</li>
+<li><code>/design-review</code> — 验证每个 GDD（8 必需章节、无 MAJOR REVISION 裁决）- 每个系统运行</li>
+<li><code>/review-all-gdds</code> — 跨越所有 GDD 的整体一致性检查 + 设计理论审查</li>
+<li><code>/consistency-check</code> — 扫描所有 GDD 以发现矛盾、未定义引用和机制冲突</li>
+</ol>
+<p><strong>产出</strong>：</p>
+<ul>
+<li><code>design/gdd/[system-name].md</code> (每个系统一个)</li>
+<li><code>design/gdd/gdd-cross-review-*.md</code></li>
+</ul>
+<h3 id="阶段-3：技术设置-Technical-Setup"><a href="#阶段-3：技术设置-Technical-Setup" class="headerlink" title="阶段 3：技术设置 (Technical Setup)"></a>阶段 3：技术设置 (Technical Setup)</h3><p><strong>目标</strong>：架构决策、视觉身份规格、无障碍基础、引擎验证</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li><code>/create-architecture</code> — 编写覆盖所有系统的主架构文档</li>
+<li><code>/architecture-decision</code> — 将关键技术决策记录为 ADR（最少 3 个基础层 ADR）</li>
+<li><code>/architecture-review</code> — 验证完整性、依赖排序、引擎兼容性</li>
+<li><code>/create-control-manifest</code> — 从所有接受的 ADR 生成扁平程序员规则表</li>
+<li>无障碍要求文档 — 提交无障碍层级和功能矩阵</li>
+</ol>
+<p><strong>产出</strong>：</p>
+<ul>
+<li><code>docs/architecture/architecture.md</code></li>
+<li><code>docs/architecture/adr-*.md</code></li>
+<li><code>docs/architecture/control-manifest.md</code></li>
+<li><code>design/accessibility-requirements.md</code></li>
+</ul>
+<h3 id="阶段-4：预制作-Pre-Production"><a href="#阶段-4：预制作-Pre-Production" class="headerlink" title="阶段 4：预制作 (Pre-Production)"></a>阶段 4：预制作 (Pre-Production)</h3><p><strong>目标</strong>：UX 规格、资源规格、核心机制原型、定义故事、验证乐趣</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li><code>/asset-spec</code> — 从批准的 GDD 和关卡文档生成每个资源的视觉规格</li>
+<li><code>/ux-design</code> — 为主菜单、核心游戏玩法 HUD 和交互模式编写 UX 规格</li>
+<li><code>/ux-review</code> — 验证所有关键屏幕 UX 规格的 GDD 对齐和无障碍层级合规</li>
+<li><code>/prototype</code> — 在隔离工作树中构建一次性原型以验证核心机制</li>
+<li><code>/create-epics</code> — 将 GDD + ADR 转换为史诗 — 每个架构模块一个</li>
+<li><code>/create-stories</code> — 将每个史诗分解为可实现的故事文件</li>
+<li><code>/test-setup</code> — 在第一次冲刺前搭建测试框架和 CI 管道一次</li>
+<li><code>/sprint-plan</code> — 用史诗中优先排序的故事计划第一次冲刺</li>
+<li><code>/playtest-report</code> — 文档化垂直切片试玩会话（继续前至少 1 次会话）</li>
+</ol>
+<p><strong>产出</strong>：</p>
+<ul>
+<li><code>design/assets/asset-manifest.md</code></li>
+<li><code>design/ux/*.md</code></li>
+<li><code>prototypes/*/README.md</code></li>
+<li><code>production/epics/*/EPIC.md</code></li>
+<li><code>production/sprints/sprint-*.md</code></li>
+<li><code>production/playtests/*.md</code></li>
+</ul>
+<h3 id="阶段-5：制作-Production"><a href="#阶段-5：制作-Production" class="headerlink" title="阶段 5：制作 (Production)"></a>阶段 5：制作 (Production)</h3><p><strong>目标</strong>：基于冲刺的功能开发 — 挑选、实现、关闭故事</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li><code>/sprint-plan</code> — 用优先排序的、准备好的故事计划当前冲刺</li>
+<li><code>/story-readiness</code> — 在开发者提取前验证故事是否准备好实现</li>
+<li><code>/dev-story</code> — 提取下一个准备好的故事并实现它 — 路由到正确的程序员代理</li>
+<li><code>/code-review</code> — 每个故事实现后的架构代码审查</li>
+<li><code>/story-done</code> — 验证所有验收标准、检查 GDD&#x2F;ADR 偏差、关闭故事</li>
+<li><code>/qa-plan</code> — 为每个史诗或冲刺生成 QA 测试计划</li>
+<li><code>/bug-report</code> — 记录和优先排序实现期间发现的 bug</li>
+<li><code>/retrospective</code> — 冲刺后审查以捕获有效的和需要改变的</li>
+<li><code>/team-*</code> — 协调多个代理处理复杂功能（可选）</li>
+<li><code>/scope-check</code> — 通过比较当前冲刺范围与原始史诗范围检测范围蔓延</li>
+<li><code>/sprint-status</code> — 无需完整报告的快速 30 行冲刺进度快照</li>
+</ol>
+<p><strong>产出</strong>：</p>
+<ul>
+<li><code>src/</code> 中的实现代码</li>
+<li><code>tests/</code> 中的测试</li>
+<li><code>production/epics/**/*.md</code> 中的更新故事文件</li>
+</ul>
+<h3 id="阶段-6：打磨-Polish"><a href="#阶段-6：打磨-Polish" class="headerlink" title="阶段 6：打磨 (Polish)"></a>阶段 6：打磨 (Polish)</h3><p><strong>目标</strong>：性能、平衡、试玩、bug 修复</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li><code>/perf-profile</code> — 性能分析和优化 CPU&#x2F;GPU&#x2F;内存瓶颈</li>
+<li><code>/balance-check</code> — 分析游戏平衡公式和数据以发现异常值和破坏的进度</li>
+<li><code>/asset-audit</code> — 验证命名约定、文件格式标准和大小预算</li>
+<li><code>/playtest-report</code> — 试玩会话（×3）：新玩家体验、中期系统、难度曲线</li>
+<li><code>/team-polish</code> — 跨越性能、音频、视觉和 UX 的协调打磨通过</li>
+</ol>
+<p><strong>产出</strong>：</p>
+<ul>
+<li>性能优化</li>
+<li>平衡调整</li>
+<li>Bug 修复</li>
+</ul>
+<h3 id="阶段-7：发布-Release"><a href="#阶段-7：发布-Release" class="headerlink" title="阶段 7：发布 (Release)"></a>阶段 7：发布 (Release)</h3><p><strong>目标</strong>：发布准备、认证和发货</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li><code>/release-checklist</code> — 跨越所有部门的发布前验证：代码、内容、商店、法律</li>
+<li><code>/patch-notes</code> — 从 git 历史和冲刺数据生成面向玩家的补丁说明</li>
+<li><code>/changelog</code> — 从提交、冲刺和设计文档自动生成内部变更日志</li>
+<li><code>/launch-checklist</code> — 最终发布准备 — 发货给玩家前的最后一道门</li>
+</ol>
+<p><strong>产出</strong>：</p>
+<ul>
+<li>发布构建</li>
+<li>补丁说明</li>
+<li>变更日志</li>
+</ul>
+<hr>
+<h2 id="九、项目结构"><a href="#九、项目结构" class="headerlink" title="九、项目结构"></a>九、项目结构</h2><p>关键目录说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">CLAUDE.md                           # 主配置</span><br><span class="line">.claude/</span><br><span class="line">  settings.json                     # 钩子、权限、安全规则</span><br><span class="line">  agents/                           # 49 个代理定义（markdown + YAML frontmatter）</span><br><span class="line">  skills/                           # 72 个斜杠命令（每个技能一个子目录）</span><br><span class="line">  hooks/                            # 12 个钩子脚本（bash，跨平台）</span><br><span class="line">  rules/                            # 11 条路径范围的编码标准</span><br><span class="line">  statusline.sh                     # 状态行脚本（上下文%、模型、阶段、史诗面包屑）</span><br><span class="line">  docs/</span><br><span class="line">    workflow-catalog.yaml           # 7 阶段管定义（由 /help 读取）</span><br><span class="line">    templates/                      # 39 个文档模板</span><br><span class="line">src/                                # 游戏源代码</span><br><span class="line">assets/                             # 美术、音频、VFX、着色器、数据文件</span><br><span class="line">design/                             # GDD、叙事文档、关卡设计</span><br><span class="line">docs/                               # 技术文档和 ADR</span><br><span class="line">tests/                              # 测试套件（单元、集成、性能、试玩）</span><br><span class="line">tools/                              # 构建和管工具</span><br><span class="line">prototypes/                         # 一次性原型（与 src/ 隔离）</span><br><span class="line">production/                         # 冲刺计划、里程碑、发布跟踪</span><br><span class="line">  session-state/                    # 会话状态（active.md — gitignored）</span><br><span class="line">  session-logs/                     # 会话审计跟踪（gitignored）</span><br></pre></td></tr></table></figure>
+
+
+
+<p> <strong><code>.claude/</code> — Claude Code 配置</strong></p>
+<ul>
+<li><code>settings.json</code> — 权限和钩子配置</li>
+<li><code>agents/</code> — 代理定义文件</li>
+<li><code>skills/</code> — 技能命令定义</li>
+<li><code>hooks/</code> — 自动化钩子脚本</li>
+<li><code>rules/</code> — 路径范围规则</li>
+<li><code>docs/templates/</code> — 文档模板</li>
+</ul>
+<p><strong><code>src/</code> — 游戏源代码</strong></p>
+<ul>
+<li><code>core/</code> — 核心引擎系统</li>
+<li><code>gameplay/</code> — 游戏玩法系统</li>
+<li><code>ai/</code> — AI 系统</li>
+<li><code>networking/</code> — 网络代码</li>
+<li><code>ui/</code> — UI 系统</li>
+<li><code>tools/</code> — 开发工具</li>
+</ul>
+<p> <strong><code>assets/</code> — 游戏资源</strong></p>
+<ul>
+<li><code>art/</code> — 美术资源</li>
+<li><code>audio/</code> — 音频资源</li>
+<li><code>vfx/</code> — 视觉效果</li>
+<li><code>shaders/</code> — 着色器</li>
+<li><code>data/</code> — 数据文件</li>
+</ul>
+<p><strong><code>design/</code> — 设计文档</strong></p>
+<ul>
+<li><code>gdd/</code> — 游戏设计文档</li>
+<li><code>narrative/</code> — 叙事文档</li>
+<li><code>levels/</code> — 关卡设计</li>
+<li><code>ux/</code> — UX 规格</li>
+<li><code>art/</code> — 美术圣经</li>
+</ul>
+<p> <strong><code>docs/</code> — 技术文档</strong></p>
+<ul>
+<li><code>architecture/</code> — 架构文档和 ADR</li>
+<li><code>api/</code> — API 文档</li>
+<li><code>engine-reference/</code> — 引擎 API 参考</li>
+</ul>
+<p><strong><code>tests/</code> — 测试套件</strong></p>
+<ul>
+<li><code>unit/</code> — 单元测试</li>
+<li><code>integration/</code> — 集成测试</li>
+<li><code>performance/</code> — 性能测试</li>
+<li><code>playtest/</code> — 试玩测试</li>
+</ul>
+<p> <strong><code>production/</code> — 制作管理</strong></p>
+<ul>
+<li><code>sprints/</code> — 冲刺计划</li>
+<li><code>milestones/</code> — 里程碑定义</li>
+<li><code>epics/</code> — 史诗和故事</li>
+<li><code>playtests/</code> — 试玩报告</li>
+<li><code>bugs/</code> — Bug 报告</li>
+<li><code>releases/</code> — 发布跟踪</li>
+</ul>
+<hr>
+<h2 id="十、设计哲学"><a href="#十、设计哲学" class="headerlink" title="十、设计哲学"></a>十、设计哲学</h2><p>此模板基于专业游戏开发实践：</p>
+<h3 id="10-1-MDA-框架"><a href="#10-1-MDA-框架" class="headerlink" title="10.1 MDA 框架"></a>10.1 MDA 框架</h3><p><strong>Mechanics, Dynamics, Aesthetics</strong> — 游戏设计分析框架</p>
+<ul>
+<li><strong>Mechanics</strong>：游戏的规则和系统</li>
+<li><strong>Dynamics</strong>：玩家与机制交互产生的运行时行为</li>
+<li><strong>Aesthetics</strong>：玩家体验的情感反应</li>
+</ul>
+<p>用于分析游戏设计的三个层次，确保设计决策从情感目标回溯到具体机制。</p>
+<h3 id="10-2-自我决定理论"><a href="#10-2-自我决定理论" class="headerlink" title="10.2 自我决定理论"></a>10.2 自我决定理论</h3><p><strong>Autonomy, Competence, Relatedness</strong> — 玩家动机理论</p>
+<ul>
+<li><strong>Autonomy</strong>：玩家感觉有选择和控制</li>
+<li><strong>Competence</strong>：玩家感觉有能力克服挑战</li>
+<li><strong>Relatedness</strong>：玩家感觉与他人连接</li>
+</ul>
+<p>用于设计激励玩家的系统和循环。</p>
+<h3 id="10-3-心流状态设计"><a href="#10-3-心流状态设计" class="headerlink" title="10.3 心流状态设计"></a>10.3 心流状态设计</h3><p><strong>Challenge-Skill Balance</strong> — 玩家参与度设计</p>
+<ul>
+<li>挑战必须匹配玩家技能水平</li>
+<li>太容易 → 无聊</li>
+<li>太难 → 沮丧</li>
+<li>心流通道 → 深度参与</li>
+</ul>
+<p>用于设计难度曲线和进度系统。</p>
+<h3 id="10-4-Bartle-玩家类型"><a href="#10-4-Bartle-玩家类型" class="headerlink" title="10.4 Bartle 玩家类型"></a>10.4 Bartle 玩家类型</h3><p><strong>Achiever, Explorer, Socializer, Killer</strong> — 受众定位</p>
+<ul>
+<li><strong>Achiever</strong>：追求成就和进度</li>
+<li><strong>Explorer</strong>：探索世界和系统</li>
+<li><strong>Socializer</strong>：与他人互动</li>
+<li><strong>Killer</strong>：支配和竞争</li>
+</ul>
+<p>用于验证设计是否服务目标受众。</p>
+<h3 id="10-5-验证驱动开发"><a href="#10-5-验证驱动开发" class="headerlink" title="10.5 验证驱动开发"></a>10.5 验证驱动开发</h3><p><strong>Tests First, Then Implementation</strong> — 开发方法论</p>
+<ul>
+<li>在添加游戏玩法系统时先编写测试</li>
+<li>对于 UI 变更，用截图验证</li>
+<li>在标记工作完成前比较预期输出与实际输出</li>
+<li>每个实现都应该有证明其工作的方式</li>
+</ul>
+<hr>
+<h2 id="十一、自定义指南"><a href="#十一、自定义指南" class="headerlink" title="十一、自定义指南"></a>十一、自定义指南</h2><p>这是<strong>模板</strong>，不是锁定的框架。一切都意味着可以自定义：</p>
+<h3 id="11-1-添加-移除代理"><a href="#11-1-添加-移除代理" class="headerlink" title="11.1 添加&#x2F;移除代理"></a>11.1 添加&#x2F;移除代理</h3><p>删除不需要的代理文件，为你的领域添加新的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 移除不需要的代理</span></span><br><span class="line"><span class="built_in">rm</span> .claude/agents/live-ops-designer.md  <span class="comment"># 如果不做持续运营</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加新代理</span></span><br><span class="line"><span class="comment"># 创建 .claude/agents/my-custom-agent.md</span></span><br></pre></td></tr></table></figure>
+
+<p>代理定义格式：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: my-custom-agent</span><br><span class="line">description: 代理的简短描述</span><br><span class="line">model: sonnet  # 或 opus, haiku</span><br><span class="line"><span class="section">tools: Read, Glob, Grep, Write, Edit, Bash  # 可用工具</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 代理提示词</span></span><br><span class="line"></span><br><span class="line">这里写代理的具体指令和行为...</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-2-编辑代理提示词"><a href="#11-2-编辑代理提示词" class="headerlink" title="11.2 编辑代理提示词"></a>11.2 编辑代理提示词</h3><p>调整代理行为，添加项目特定知识：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 在代理文件中</span></span><br><span class="line"></span><br><span class="line"><span class="section">## Project-Specific Knowledge</span></span><br><span class="line"><span class="bullet">-</span> This project uses a custom event bus pattern</span><br><span class="line"><span class="bullet">-</span> All game events must go through EventBus singleton</span><br><span class="line"><span class="bullet">-</span> See docs/architecture/adr-event-bus.md for details</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-3-修改技能"><a href="#11-3-修改技能" class="headerlink" title="11.3 修改技能"></a>11.3 修改技能</h3><p>调整工作流以匹配你团队的过程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 技能目录结构</span></span><br><span class="line">.claude/skills/my-skill/</span><br><span class="line">  skill.md          <span class="comment"># 技能定义和提示词</span></span><br><span class="line">  test.md           <span class="comment"># 测试用例（可选）</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="11-4-添加规则"><a href="#11-4-添加规则" class="headerlink" title="11.4 添加规则"></a>11.4 添加规则</h3><p>为你的项目目录结构创建新的路径范围规则：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># .claude/rules/my-custom-rule.md</span></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"><span class="section">globs: src/my-custom-dir/**</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># Custom Rules</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> All files in this directory must...</span><br><span class="line"><span class="bullet">-</span> Use this pattern for...</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-5-调整钩子"><a href="#11-5-调整钩子" class="headerlink" title="11.5 调整钩子"></a>11.5 调整钩子</h3><p>调整验证严格性，添加新检查：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编辑钩子脚本</span></span><br><span class="line">.claude/hooks/validate-commit.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加自定义检查</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$file</span>&quot;</span> == *.myext ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="comment"># 自定义验证逻辑</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="11-6-选择引擎"><a href="#11-6-选择引擎" class="headerlink" title="11.6 选择引擎"></a>11.6 选择引擎</h3><p>使用 Godot、Unity 或 Unreal 代理集（或无）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 CLAUDE.md 中设置</span></span><br><span class="line"><span class="comment">## Engine Specialists</span></span><br><span class="line">- **Primary**: godot-specialist</span><br><span class="line">- **Language/Code Specialist**: godot-gdscript-specialist</span><br><span class="line">- **Shader Specialist**: godot-shader-specialist</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-7-设置审查强度"><a href="#11-7-设置审查强度" class="headerlink" title="11.7 设置审查强度"></a>11.7 设置审查强度</h3><p><code>full</code>（所有总监门控）、<code>lean</code>（仅阶段门控）或 <code>solo</code>（无）。</p>
+<p>在 <code>/start</code> 期间设置或编辑 <code>production/review-mode.txt</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;lean&quot;</span> &gt; production/review-mode.txt</span><br></pre></td></tr></table></figure>
+
+<p>每次运行覆盖：<code>--review solo</code> 在任何技能上。</p>
+<hr>
+<h2 id="十二、常见问题"><a href="#十二、常见问题" class="headerlink" title="十二、常见问题"></a>十二、常见问题</h2><p><strong>Q: 这个项目会自动开发游戏吗？</strong><br><strong>A: 不会</strong>。这是协作系统，不是自动执行系统。你做出每个决定，代理提供结构、专业知识和引导。代理会提问、展示选项、等待你的批准，然后才执行。</p>
+<p><strong>Q: 我必须使用所有 49 个代理吗？</strong><br><strong>A: 不必</strong>。删除你不需要的代理。小型项目可能只需要 <code>game-designer</code>、<code>gameplay-programmer</code> 和 <code>qa-tester</code>。模板包含完整工作室，但你可以精简到适合你项目的规模。</p>
+<p><strong>Q: 我可以使用不同的引擎吗？</strong><br><strong>A: 可以</strong>。模板包含 Godot、Unity 和 Unreal 的专家集合，但你可以移除这些并添加自己的引擎专家。只需创建新的代理定义文件。</p>
+<p><strong>Q: 钩子会减慢工作流吗？</strong><br><strong>A: 不会</strong>。钩子设计为快速失败 — 如果命令或文件路径不相关，它们立即退出（exit 0）。大多数钩子在 &lt;15ms 内完成。只有实际违规才会产生可见输出。</p>
+<p><strong>Q: 我可以禁用特定规则吗？</strong><br><strong>A: 可以</strong>。编辑 <code>.claude/rules/</code> 中的规则文件，或删除规则文件。你也可以在 <code>settings.json</code> 中调整钩子配置以跳过特定检查。</p>
+<blockquote>
+<p>为 Claude Code 构建。维护和扩展 — 欢迎通过 <a target="_blank" rel="noopener" href="https://github.com/Donchitos/Claude-Code-Game-Studios/discussions">GitHub Discussions</a> 贡献。*</p>
+</blockquote>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><strong>Claude Code Game Studios</strong> 展示了将大模型按能力分层、角色化编排后的巨大潜力。</li>
+<li>Opus 模型负责战略决策与资源协调，Sonnet 模型承担部门管理与规划，Haiku 模型则高效执行具体的开发、测试与运营任务。</li>
+<li>这种仿生组织架构，既保留了真人工作室的协作逻辑，又充分发挥了AI并行处理、24小时在线的优势。</li>
+<li>未来随着模型能力的进一步演进，这样的AI虚拟工作室将从概念走向现实，成为游戏开发乃至更广泛创意产业中的新型生产力单元。</li>
+<li>但是就目前而言，AI模型的能力和Token的消耗还是限制了其发挥更强的作用，期待后续更强劲的工具出现吧。</li>
+</ul>
+<hr>
+<blockquote>
+<ul>
+<li><p>🎬 博客主页：<a target="_blank" rel="noopener" href="https://xiaoy.blog.csdn.net/">https://xiaoy.blog.csdn.net</a></p>
+</li>
+<li><p>🎥 本文由 <strong>呆呆敲代码的小Y</strong> 原创  🙉</p>
+</li>
+<li><p>🎄 学习专栏推荐：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_10199287.html">Unity系统学习专栏</a></p>
+</li>
+<li><p>🌲 游戏制作专栏推荐：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11066124.html">游戏制作</a></p>
+</li>
+<li><p>🌲Unity实战100例专栏推荐：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11189171.html">Unity 实战100例 教程</a></p>
+</li>
+<li><p>🏅 欢迎点赞 👍 收藏 ⭐留言 📝 如有错误敬请指正！</p>
+</li>
+<li><p>📆 未来很长，值得我们全力奔赴更美好的生活✨</p>
+</li>
+<li><p>——————❤️分割线❤️————————-</p>
+</li>
+</ul>
+</blockquote>
+<p><img src="/XiaoY_Web_Hexo/images/shared/141_fca9590298da4004906d83d81f4ca0e6.gif" alt="请添加图片描述"><img src="/XiaoY_Web_Hexo/images/shared/141_fca9590298da4004906d83d81f4ca0e6.gif" alt="请添加图片描述"><img src="/XiaoY_Web_Hexo/images/shared/141_fca9590298da4004906d83d81f4ca0e6.gif" alt="请添加图片描述"></p>
+<p><img src="/XiaoY_Web_Hexo/images/shared/137_01e7ec91f0984ce4a166bf72cb52bea5.gif" alt="请添加图片描述"></p>
+<p><font color=#ff6984 size=5> <strong>资料白嫖，技术互助</strong></font></p>
+<table>
+<thead>
+<tr>
+<th align="left">学习路线指引（点击解锁）</th>
+<th>知识定位</th>
+<th>人群定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_10199287.html"><font color=#ff6984 size=4>🧡  Unity系统学习专栏 </font></a></td>
+<td>入门级</td>
+<td>本专栏从Unity入门开始学习，快速达到Unity的入门水平</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11189171.html"><font color=#ffd700 size=4>💛 Unity实战类项目 </font></a></td>
+<td>进阶级</td>
+<td>计划制作Unity的 100个实战案例！助你进入Unity世界，争取做最全的Unity原创博客大全。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11066124.html"><font color=#ee4000 size=4>❤️ 游戏制作专栏  </font></a></td>
+<td>难度偏高</td>
+<td>分享学习一些Unity成品的游戏Demo和其他语言的小游戏！</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://bbs.csdn.net/forums/unitygame"><font color=#00ee76 size=4>💚 游戏爱好者万人社区 </font></a></td>
+<td>互助&#x2F;吹水</td>
+<td>数万人游戏爱好者社区，聊天互助，白嫖奖品</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11346080.html"><font color=#0099ff size=4>💙 Unity100个实用技能</font> </a></td>
+<td>Unity查漏补缺</td>
+<td>针对一些Unity中经常用到的一些小知识和技能进行学习介绍，核心目的就是让我们能够快速学习Unity的知识以达到查漏补缺</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://gody-98.github.io/XiaoY_Web_Hexo">呆呆敲代码的小Y</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/48%E4%B8%AAAI%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%95%B4%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E5%AE%A4%EF%BC%9AClaude%20Code%20Game%20Studios/">https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/48%E4%B8%AAAI%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%95%B4%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E5%AE%A4%EF%BC%9AClaude%20Code%20Game%20Studios/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://gody-98.github.io/XiaoY_Web_Hexo" target="_blank">呆呆敲代码的小Y</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/XiaoY_Web_Hexo/tags/AI/">AI</a><a class="post-meta__tags" href="/XiaoY_Web_Hexo/tags/Claude/">Claude</a></div><div class="post-share"><div class="social-share" data-image="/XiaoY_Web_Hexo/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/%E8%AF%B4%E8%AF%9D%E5%B0%B1%E8%A1%8C%EF%BC%81AI%20%E8%AE%A9%20Blender%20%E8%87%AA%E5%B7%B1%E5%8A%A8%E8%B5%B7%E6%9D%A5%EF%BC%8CBlender-MCP%E5%80%BC%E5%BE%97%E4%B8%80%E8%AF%95/" title="说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试</div></div><div class="info-2"><div class="info-item-1">   说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试 想象一下：你对着电脑说”帮我创建一个宇航员角色”，然后 Blender 自动开始建模——这不是科幻，这是正在发生的事。  前言：当我第一次”指挥”AI建模晚上躺在床上刷手机时，看到一个有趣的开源项目——Blender MCP。简介说它能让 AI 助手直接控制 Blender 进行 3D 建模。 说实话，我第一反应是：”还有这么好玩的东西？” 但作为一个 3D 建模零基础用户（以及拖延症晚期患者），我还是爬起来试了试。结果——我对着 AI 说了一句”创建一个太空飞船”，然后看着 Blender 自己动了起来，那感觉就像在施魔法。 这篇文章，就是把我的”处女体验”分享给你。  一、什么是 Blender MCP？1.1 先说 MCP 是什么MCP（Model Context Protocol） 可以理解为一个”翻译官”协议。它就像 USB 接口让不同设备能互相连接一样，MCP 让 AI 模型能够”插上”各种外部工具进行操作。 在 Blender MCP 之前，如果你想让 AI 帮你建模，通常需要： ...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/%E3%80%90%E6%9C%80%E6%96%B0Codex%E6%95%99%E7%A8%8B%E3%80%91%20%E5%AE%89%E8%A3%85%E3%80%81%E5%85%A5%E9%97%A8%E5%92%8C%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8%EF%BC%8C%E9%80%82%E5%90%88%E6%96%B0%E6%89%8B/" title="【最新Codex教程】 安装、入门和快速使用，适合新手"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">【最新Codex教程】 安装、入门和快速使用，适合新手</div></div><div class="info-2"><div class="info-item-1">  前言 目前AI Agent市场可谓是遍地开花，现在最火的就是OpenAI旗下的 Codex 工具了！ 老手早就各种Agent手到擒来，玩出花来的都有，而新手却连怎样安装使用都不知道~ 本文则带来Codex最新入门教程，以及快速使用方法，绕过复杂冗余的繁琐步骤，针对新手友好的教程。 让感兴趣的小伙伴可以先安装完成、然后快速体验Codex的实用功能，不讲废话直接开始。   🕹️【最新Codex教程】 | 安装、入门和快速使用，适合新手 本文基于 OpenAI 官方文档整理，实际使用以官方页面和账号内提示为准。  🧐一、 Codex 简介Codex 是 OpenAI 面向软件开发的 coding agent。它可以读取代码、修改文件、运行命令、解释项目结构、修复 bug、生成测试和辅助 code review。 官方文档提到，Codex 可以通过多种方式使用：CLI、IDE、桌面端、移动端。对新手来说，最常用的是 桌面端 和 CLI。 本文主要讲解Codex桌面端的使用方法，也是普通人最容易上手使用的一种方式，比CLI命令行器敲代码的方式要友好的多！  🚀二、安装方法在开始安...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/CC-Switch%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%EF%BC%8C%E5%8C%85%E5%90%ABClaudeCode%E3%80%81Codex%E5%85%B7%E4%BD%93%E7%A4%BA%E4%BE%8B%20%E3%80%90%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%91/" title="CC-Switch使用教程，包含ClaudeCode、Codex具体示例 【持续更新】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">CC-Switch使用教程，包含ClaudeCode、Codex具体示例 【持续更新】</div></div><div class="info-2"><div class="info-item-1">  前言 现在AIAgent爆火，各个Agent的配置管理也是一个麻烦事，所以cc-switch应运而生。 网上目前很多关于cc-switch的介绍，但是很多都很繁琐冗余。 本文直接简单明了介绍cc-switch的具体使用方法和使用技巧，一起快速上手吧！   CC-Switch 使用教程，包含ClaudeCode、Codex具体示例 【持续更新】一、 CC Switch介绍现代 AI 编程依赖于 Claude Code、Codex、Gemini CLI、OpenCode 和 OpenClaw 等 CLI 工具——但每个工具都有自己的配置格式。切换 API 供应商意味着手动编辑 JSON、TOML 或 .env 文件，而在多个工具之间缺乏一个统一管理 MCP, SKILLS 的方式。 CC Switch 为你提供一个桌面应用来管理所有五个 CLI 工具。无需手动编辑配置文件，你将获得一个可视化界面，一键将供应商导入应用，一键在不同的供应商之间进行切换，内置 50+ 供应商预设、统一的 MCP, SKILLS 管理以及系统托盘即时切换功能——所有操作都基于可靠的 SQLite 数据库...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/Blender-MCP%20+%20Claude%20Code%EF%BC%8C%E6%9E%84%E5%BB%BA%E6%9C%80%E5%BC%BAAI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E6%A8%A1%E7%8E%AF%E5%A2%83/" title="Blender-MCP + Claude Code，构建最强AI自动化建模环境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">Blender-MCP + Claude Code，构建最强AI自动化建模环境</div></div><div class="info-2"><div class="info-item-1">   前言 本篇文章来介绍使用 Blender-MCP + Claude Code，实现AI自动化建模功能。 借助MCP工具，Claude可以直接与Blender进行双向指令交互，开发者则可以直接使用自然语言进行建模。 这一组合充分利用了AI的问题诊断与创意辅助能力，使得小白也可以用大白话直接完成建模。 在Trae中使用blender-MCP：说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试 之前还写过Unity引擎连接MCP用自然语言做游戏的教程，感兴趣的也可以看下：UnityMCP+Claude+VSCode，构建最强AI游戏开发环境   Blender-MCP + Claude Code，构建最强AI自动化建模环境🧐一、Blender - MCP1.1 介绍BlenderMCP 通过 Model Context Protocol (MCP) 将 Blender 与 Claude AI 相连接，使 Claude 能够直接与控制 Blender 进行交互。这个集成为 AI 辅助3D建模、场景创建和操作提供了强大支持。 核心功能  双向通讯：通过基...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/UnityMCP+Claude+VSCode%EF%BC%8C%E6%9E%84%E5%BB%BA%E6%9C%80%E5%BC%BAAI%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="UnityMCP+Claude+VSCode，构建最强AI游戏开发环境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">UnityMCP+Claude+VSCode，构建最强AI游戏开发环境</div></div><div class="info-2"><div class="info-item-1">   前言 本篇文章来介绍使用 UnityMCP+Claude+VSCode，打造一个更智能、高效的游戏开发工作流。 借助MCP工具，Claude可以直接与Unity编辑器进行双向指令交互，开发者则可以直接使用自然语言进行Unity游戏开发。 这一组合充分利用了AI的代码生成、问题诊断与创意辅助能力，极大提升了Unity项目的开发效率与质量。   一、UnityMCP+Claude+VSCode，构建最强AI 游戏开发环境1.1 介绍在之前文章中已经详细介绍过在使用UnityMCP之前需要做的步骤，包括MCP的安装和配置都有介绍。【Unity-AI开发篇】| Unity-MCP最新指南：让AI接管游戏开发 下面这几样还是必须安装的，这里再提一下：  Git CLI：用于克隆服务器代码。下载 Git Python：3.12 或更高版本。下载 Python Unity Hub 及编辑器：2020.3 LTS 或更高版本。下载 Unity uv（Python 包管理器）：pip install uv # 或参考：https://docs.astral.sh/uv/getting-sta...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/%E8%AF%B4%E8%AF%9D%E5%B0%B1%E8%A1%8C%EF%BC%81AI%20%E8%AE%A9%20Blender%20%E8%87%AA%E5%B7%B1%E5%8A%A8%E8%B5%B7%E6%9D%A5%EF%BC%8CBlender-MCP%E5%80%BC%E5%BE%97%E4%B8%80%E8%AF%95/" title="说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试</div></div><div class="info-2"><div class="info-item-1">   说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试 想象一下：你对着电脑说”帮我创建一个宇航员角色”，然后 Blender 自动开始建模——这不是科幻，这是正在发生的事。  前言：当我第一次”指挥”AI建模晚上躺在床上刷手机时，看到一个有趣的开源项目——Blender MCP。简介说它能让 AI 助手直接控制 Blender 进行 3D 建模。 说实话，我第一反应是：”还有这么好玩的东西？” 但作为一个 3D 建模零基础用户（以及拖延症晚期患者），我还是爬起来试了试。结果——我对着 AI 说了一句”创建一个太空飞船”，然后看着 Blender 自己动了起来，那感觉就像在施魔法。 这篇文章，就是把我的”处女体验”分享给你。  一、什么是 Blender MCP？1.1 先说 MCP 是什么MCP（Model Context Protocol） 可以理解为一个”翻译官”协议。它就像 USB 接口让不同设备能互相连接一样，MCP 让 AI 模型能够”插上”各种外部工具进行操作。 在 Blender MCP 之前，如果你想让 AI 帮你建模，通常需要： ...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" title="【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤</div></div><div class="info-2"><div class="info-item-1">   前言 大语言模型正深刻改变人机交互方式，DeepSeek 凭借强大的推理能力、文本快速响应能力及超长上下文，成为开发者接入 AI 对话的热门选择。 本文带你从零开始在 Unity 中接入 DeepSeek，实现实时 AI 对话。 从 API 获取、配置到 UI 交互，全程详细介绍，即使 Unity 新手也能轻松上手。   【Unity-AI开发篇】| 游戏中接入DeepSeek实现AI对话，完整详细步骤一、DeepSeek1.1 介绍DeepSeek（深度求索） 是由幻方量化孵化的一家中国AI实验室，专注于大语言模型的研发。自2023年成立以来，DeepSeek凭借其低成本、高性能、全开源的技术路线，迅速成为全球AI领域的重要力量。 核心亮点  极致性价比：训练成本仅 557万美元，性能对标 GPT-4 超长上下文：支持 100万tokens，可一次性处理《三体》三部曲 开源生态：模型权重完全开放，开发者可自由部署  1.2 效果展示  二、 获取DeepSeek模型API2.1 API调用文档DeepSeek的API文档：https://api-docs.deepseek...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/%E3%80%90%E6%9C%80%E6%96%B0Codex%E6%95%99%E7%A8%8B%E3%80%91%20%E5%AE%89%E8%A3%85%E3%80%81%E5%85%A5%E9%97%A8%E5%92%8C%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8%EF%BC%8C%E9%80%82%E5%90%88%E6%96%B0%E6%89%8B/" title="【最新Codex教程】 安装、入门和快速使用，适合新手"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">【最新Codex教程】 安装、入门和快速使用，适合新手</div></div><div class="info-2"><div class="info-item-1">  前言 目前AI Agent市场可谓是遍地开花，现在最火的就是OpenAI旗下的 Codex 工具了！ 老手早就各种Agent手到擒来，玩出花来的都有，而新手却连怎样安装使用都不知道~ 本文则带来Codex最新入门教程，以及快速使用方法，绕过复杂冗余的繁琐步骤，针对新手友好的教程。 让感兴趣的小伙伴可以先安装完成、然后快速体验Codex的实用功能，不讲废话直接开始。   🕹️【最新Codex教程】 | 安装、入门和快速使用，适合新手 本文基于 OpenAI 官方文档整理，实际使用以官方页面和账号内提示为准。  🧐一、 Codex 简介Codex 是 OpenAI 面向软件开发的 coding agent。它可以读取代码、修改文件、运行命令、解释项目结构、修复 bug、生成测试和辅助 code review。 官方文档提到，Codex 可以通过多种方式使用：CLI、IDE、桌面端、移动端。对新手来说，最常用的是 桌面端 和 CLI。 本文主要讲解Codex桌面端的使用方法，也是普通人最容易上手使用的一种方式，比CLI命令行器敲代码的方式要友好的多！  🚀二、安装方法在开始安...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/XiaoY_Web_Hexo/img/avatar.jpg" onerror="this.onerror=null;this.src='/XiaoY_Web_Hexo/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">呆呆敲代码的小Y</div><div class="author-info-description">努力前行，总会成为自己心中的那道光</div><div class="site-data"><a href="/XiaoY_Web_Hexo/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/XiaoY_Web_Hexo/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/XiaoY_Web_Hexo/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/GodY-98" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#48%E4%B8%AAAI%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%95%B4%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E5%AE%A4%EF%BC%9AClaude-Code-Game-Studios"><span class="toc-number">2.</span> <span class="toc-text">48个AI智能体搭建完整游戏开发工作室：Claude Code Game Studios</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Claude-Code-Game-Studios-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="toc-number">2.1.</span> <span class="toc-text">一、Claude Code Game Studios 使用指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1 项目概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%99%E4%B8%AA%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2 为什么需要这个项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.3 使用说明及下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="toc-number">2.2.</span> <span class="toc-text">二、核心功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%BB%93%E6%9E%84%E5%8C%96%E4%BB%A3%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.1 结构化代理系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%BC%95%E6%93%8E%E4%B8%93%E5%AE%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2 引擎专家系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%8D%8F%E4%BD%9C%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.3 协作协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E5%85%A8"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.4 自动化安全</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-number">2.3.</span> <span class="toc-text">三、快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%89%8D%E7%BD%AE%E8%A6%81%E6%B1%82"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 前置要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 安装步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%B1%82%E7%BA%A7%E6%9E%B6%E6%9E%84"><span class="toc-number">2.4.</span> <span class="toc-text">四、工作室层级架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Skill%E6%8A%80%E8%83%BD%E5%91%BD%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.5.</span> <span class="toc-text">五、Skill技能命令系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%E9%92%A9%E5%AD%90"><span class="toc-number">2.6.</span> <span class="toc-text">六、自动化钩子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%99%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.7.</span> <span class="toc-text">七、路径规则系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-gameplay-code-md-%E2%80%94-%E6%B8%B8%E6%88%8F%E7%8E%A9%E6%B3%95%E4%BB%A3%E7%A0%81%E8%A7%84%E5%88%99"><span class="toc-number">2.7.1.</span> <span class="toc-text">7.1 gameplay-code.md — 游戏玩法代码规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-design-docs-md-%E2%80%94-%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3%E8%A7%84%E5%88%99"><span class="toc-number">2.7.2.</span> <span class="toc-text">7.2 design-docs.md — 设计文档规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">2.8.</span> <span class="toc-text">八、工作流程（重要）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-1%EF%BC%9A%E6%A6%82%E5%BF%B5-Concept"><span class="toc-number">2.8.1.</span> <span class="toc-text">阶段 1：概念 (Concept)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-2%EF%BC%9A%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-Systems-Design"><span class="toc-number">2.8.2.</span> <span class="toc-text">阶段 2：系统设计 (Systems Design)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-3%EF%BC%9A%E6%8A%80%E6%9C%AF%E8%AE%BE%E7%BD%AE-Technical-Setup"><span class="toc-number">2.8.3.</span> <span class="toc-text">阶段 3：技术设置 (Technical Setup)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-4%EF%BC%9A%E9%A2%84%E5%88%B6%E4%BD%9C-Pre-Production"><span class="toc-number">2.8.4.</span> <span class="toc-text">阶段 4：预制作 (Pre-Production)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-5%EF%BC%9A%E5%88%B6%E4%BD%9C-Production"><span class="toc-number">2.8.5.</span> <span class="toc-text">阶段 5：制作 (Production)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-6%EF%BC%9A%E6%89%93%E7%A3%A8-Polish"><span class="toc-number">2.8.6.</span> <span class="toc-text">阶段 6：打磨 (Polish)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5-7%EF%BC%9A%E5%8F%91%E5%B8%83-Release"><span class="toc-number">2.8.7.</span> <span class="toc-text">阶段 7：发布 (Release)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.9.</span> <span class="toc-text">九、项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6"><span class="toc-number">2.10.</span> <span class="toc-text">十、设计哲学</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-MDA-%E6%A1%86%E6%9E%B6"><span class="toc-number">2.10.1.</span> <span class="toc-text">10.1 MDA 框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-%E8%87%AA%E6%88%91%E5%86%B3%E5%AE%9A%E7%90%86%E8%AE%BA"><span class="toc-number">2.10.2.</span> <span class="toc-text">10.2 自我决定理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-%E5%BF%83%E6%B5%81%E7%8A%B6%E6%80%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.10.3.</span> <span class="toc-text">10.3 心流状态设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-Bartle-%E7%8E%A9%E5%AE%B6%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.10.4.</span> <span class="toc-text">10.4 Bartle 玩家类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-5-%E9%AA%8C%E8%AF%81%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91"><span class="toc-number">2.10.5.</span> <span class="toc-text">10.5 验证驱动开发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E5%8D%97"><span class="toc-number">2.11.</span> <span class="toc-text">十一、自定义指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-%E6%B7%BB%E5%8A%A0-%E7%A7%BB%E9%99%A4%E4%BB%A3%E7%90%86"><span class="toc-number">2.11.1.</span> <span class="toc-text">11.1 添加&#x2F;移除代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-%E7%BC%96%E8%BE%91%E4%BB%A3%E7%90%86%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="toc-number">2.11.2.</span> <span class="toc-text">11.2 编辑代理提示词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-%E4%BF%AE%E6%94%B9%E6%8A%80%E8%83%BD"><span class="toc-number">2.11.3.</span> <span class="toc-text">11.3 修改技能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-4-%E6%B7%BB%E5%8A%A0%E8%A7%84%E5%88%99"><span class="toc-number">2.11.4.</span> <span class="toc-text">11.4 添加规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-%E8%B0%83%E6%95%B4%E9%92%A9%E5%AD%90"><span class="toc-number">2.11.5.</span> <span class="toc-text">11.5 调整钩子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-%E9%80%89%E6%8B%A9%E5%BC%95%E6%93%8E"><span class="toc-number">2.11.6.</span> <span class="toc-text">11.6 选择引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-7-%E8%AE%BE%E7%BD%AE%E5%AE%A1%E6%9F%A5%E5%BC%BA%E5%BA%A6"><span class="toc-number">2.11.7.</span> <span class="toc-text">11.7 设置审查强度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">2.12.</span> <span class="toc-text">十二、常见问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/hello-world/" title="Hello World">Hello World</a><time datetime="2026-06-19T11:58:07.421Z" title="发表于 2026-06-19 19:58:07">2026-06-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" title="【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤">【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤</a><time datetime="2026-06-19T10:56:09.000Z" title="发表于 2026-06-19 18:56:09">2026-06-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/Unity+AI%20%E7%94%A8%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%88%B6%E4%BD%9C%E5%AE%8C%E6%95%B4%E5%B0%8F%E6%B8%B8%E6%88%8F%EF%BC%9A%E9%A3%9E%E7%BF%94%E7%9A%84%E7%89%9B%E9%A9%AC%E3%80%90AI%E7%BA%AF%E6%B7%BB%E5%8A%A0-0%E6%89%8B%E5%B7%A5%E4%BB%A3%E7%A0%81%E3%80%91/" title="Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】">Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】</a><time datetime="2026-06-19T10:55:44.000Z" title="发表于 2026-06-19 18:55:44">2026-06-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/UnityMCP+Claude+VSCode%EF%BC%8C%E6%9E%84%E5%BB%BA%E6%9C%80%E5%BC%BAAI%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="UnityMCP+Claude+VSCode，构建最强AI游戏开发环境">UnityMCP+Claude+VSCode，构建最强AI游戏开发环境</a><time datetime="2026-06-19T10:55:16.000Z" title="发表于 2026-06-19 18:55:16">2026-06-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/Blender-MCP%20+%20Claude%20Code%EF%BC%8C%E6%9E%84%E5%BB%BA%E6%9C%80%E5%BC%BAAI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E6%A8%A1%E7%8E%AF%E5%A2%83/" title="Blender-MCP + Claude Code，构建最强AI自动化建模环境">Blender-MCP + Claude Code，构建最强AI自动化建模环境</a><time datetime="2026-06-19T10:53:51.000Z" title="发表于 2026-06-19 18:53:51">2026-06-19</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By 呆呆敲代码的小Y</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/XiaoY_Web_Hexo/js/utils.js?v=5.5.5"></script><script src="/XiaoY_Web_Hexo/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/XiaoY_Web_Hexo/js/search/local-search.js?v=5.5.5"></script></div></div></body></html>

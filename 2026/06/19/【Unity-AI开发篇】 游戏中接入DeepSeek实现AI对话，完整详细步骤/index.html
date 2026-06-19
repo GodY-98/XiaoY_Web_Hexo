@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤 | 呆呆敲代码的小Y</title><meta name="author" content="呆呆敲代码的小Y"><meta name="copyright" content="呆呆敲代码的小Y"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言 大语言模型正深刻改变人机交互方式，DeepSeek 凭借强大的推理能力、文本快速响应能力及超长上下文，成为开发者接入 AI 对话的热门选择。 本文带你从零开始在 Unity 中接入 DeepSeek，实现实时 AI 对话。 从 API 获取、配置到 UI 交互，全程详细介绍，即使 Unity 新手也能轻松上手。   【Unity-AI开发篇】| 游戏中接入DeepSeek实现AI对话，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤">
+<meta property="og:url" content="https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/index.html">
+<meta property="og:site_name" content="呆呆敲代码的小Y">
+<meta property="og:description" content="前言 大语言模型正深刻改变人机交互方式，DeepSeek 凭借强大的推理能力、文本快速响应能力及超长上下文，成为开发者接入 AI 对话的热门选择。 本文带你从零开始在 Unity 中接入 DeepSeek，实现实时 AI 对话。 从 API 获取、配置到 UI 交互，全程详细介绍，即使 Unity 新手也能轻松上手。   【Unity-AI开发篇】| 游戏中接入DeepSeek实现AI对话，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gody-98.github.io/XiaoY_Web_Hexo/img/avatar.jpg">
+<meta property="article:published_time" content="2026-06-19T10:56:09.000Z">
+<meta property="article:modified_time" content="2026-06-19T11:58:35.480Z">
+<meta property="article:author" content="呆呆敲代码的小Y">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="DeepSeek">
+<meta property="article:tag" content="Unity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gody-98.github.io/XiaoY_Web_Hexo/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤",
+  "url": "https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/",
+  "image": "https://gody-98.github.io/XiaoY_Web_Hexo/img/avatar.jpg",
+  "datePublished": "2026-06-19T10:56:09.000Z",
+  "dateModified": "2026-06-19T11:58:35.480Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "呆呆敲代码的小Y",
+      "url": "https://gody-98.github.io/XiaoY_Web_Hexo"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/XiaoY_Web_Hexo/XiaoY_Web_Hexo/img/favicon.png"><link rel="canonical" href="https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/XiaoY_Web_Hexo/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/XiaoY_Web_Hexo/',
+  algolia: undefined,
+  localSearch: {"path":"/XiaoY_Web_Hexo/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/XiaoY_Web_Hexo/img/avatar.jpg" onerror="this.onerror=null;this.src='/XiaoY_Web_Hexo/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/XiaoY_Web_Hexo/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/XiaoY_Web_Hexo/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/XiaoY_Web_Hexo/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/archives/"><i class="fa-fw fas fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/XiaoY_Web_Hexo/img/wallpaper/AI%E7%BB%98%E7%94%BB%20%E5%B8%85%E6%B0%94%E7%9A%84%E6%9C%BA%E7%94%B2%E5%B0%91%E5%A5%B34K%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%9B%BE%E7%BD%91.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/XiaoY_Web_Hexo/"><span class="site-name">呆呆敲代码的小Y</span></a><a class="nav-page-title" href="/XiaoY_Web_Hexo/"><span class="site-name">【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/archives/"><i class="fa-fw fas fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/XiaoY_Web_Hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-19T10:56:09.000Z" title="发表于 2026-06-19 18:56:09">2026-06-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-19T11:58:35.480Z" title="更新于 2026-06-19 19:58:35">2026-06-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/XiaoY_Web_Hexo/categories/AI/">AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><img src="/XiaoY_Web_Hexo/images/shared/138_4ea0ad75b9c145e5ba7d219b7e425099.png" alt="请添加图片描述"></p>
+<p><img src="/XiaoY_Web_Hexo/images/shared/019_2fa4e7405f6f4e5ab17e63847148584a.gif" alt="请添加图片描述"></p>
+<hr>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li>大语言模型正深刻改变人机交互方式，<strong>DeepSeek</strong> 凭借强大的推理能力、文本快速响应能力及超长上下文，成为开发者接入 AI 对话的热门选择。</li>
+<li>本文带你从零开始在 Unity 中接入 DeepSeek，实现实时 AI 对话。</li>
+<li>从 API 获取、配置到 UI 交互，全程详细介绍，即使 Unity 新手也能轻松上手。</li>
+</ul>
+<hr>
+<h1 id="【Unity-AI开发篇】-游戏中接入DeepSeek实现AI对话，完整详细步骤"><a href="#【Unity-AI开发篇】-游戏中接入DeepSeek实现AI对话，完整详细步骤" class="headerlink" title="【Unity-AI开发篇】| 游戏中接入DeepSeek实现AI对话，完整详细步骤"></a>【Unity-AI开发篇】| 游戏中接入DeepSeek实现AI对话，完整详细步骤</h1><h2 id="一、DeepSeek"><a href="#一、DeepSeek" class="headerlink" title="一、DeepSeek"></a>一、DeepSeek</h2><h3 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1 介绍"></a>1.1 介绍</h3><p><strong>DeepSeek（深度求索）</strong> 是由幻方量化孵化的一家中国AI实验室，专注于大语言模型的研发。自2023年成立以来，DeepSeek凭借其<strong>低成本</strong>、<strong>高性能</strong>、<strong>全开源</strong>的技术路线，迅速成为全球AI领域的重要力量。</p>
+<p><strong>核心亮点</strong></p>
+<ul>
+<li>极致性价比：训练成本仅 557万美元，性能对标 GPT-4</li>
+<li>超长上下文：支持 100万tokens，可一次性处理《三体》三部曲</li>
+<li>开源生态：模型权重完全开放，开发者可自由部署</li>
+</ul>
+<h3 id="1-2-效果展示"><a href="#1-2-效果展示" class="headerlink" title="1.2 效果展示"></a>1.2 效果展示</h3><p><img src="/XiaoY_Web_Hexo/images/ai/102_c5e86159e84e49068cb89dfea1524625.gif" alt="请添加图片描述"></p>
+<hr>
+<h2 id="二、-获取DeepSeek模型API"><a href="#二、-获取DeepSeek模型API" class="headerlink" title="二、 获取DeepSeek模型API"></a>二、 获取DeepSeek模型API</h2><h3 id="2-1-API调用文档"><a href="#2-1-API调用文档" class="headerlink" title="2.1 API调用文档"></a>2.1 API调用文档</h3><p>DeepSeek的API文档：<a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/">https://api-docs.deepseek.com/zh-cn/</a><br><img src="/XiaoY_Web_Hexo/images/ai/083_a6a3ff19728847c7b3bbfdc58c01d287.png" alt="在这里插入图片描述"></p>
+<h3 id="2-2-获取API密钥"><a href="#2-2-获取API密钥" class="headerlink" title="2.2 获取API密钥"></a>2.2 获取API密钥</h3><p>登录DeepSeek开放平台获取API密钥：<a target="_blank" rel="noopener" href="https://platform.deepseek.com/api_keys">https://platform.deepseek.com/api_keys</a></p>
+<p>点击创建API key，然后输入名称，之后点击复制APIKEY（后面在Unity中接入对话时会用到）。</p>
+<p><strong>重要提示</strong>：密钥仅在申请成功时完整显示一次，后续只能查看基本信息。请务必妥善保存，建议存储在本地安全位置。<br><img src="/XiaoY_Web_Hexo/images/ai/054_6d9fcd82e5734037ad0cc37e9ef32fad.png" alt="在这里插入图片描述"></p>
+<h3 id="2-3-模型价格"><a href="#2-3-模型价格" class="headerlink" title="2.3 模型价格"></a>2.3 模型价格</h3><p>DeeoSeek的百万Tokens价格约为两到三元左右，相比之下已经很划算了，用作对话API使用完全足够。<br><img src="/XiaoY_Web_Hexo/images/ai/015_28b8c8c11325406d9fcfc08d8aa84347.png" alt="在这里插入图片描述"></p>
+<h3 id="2-4-用量信息"><a href="#2-4-用量信息" class="headerlink" title="2.4 用量信息"></a>2.4 用量信息</h3><p>可以在DeepSeek开放平台查看用量信息，消费金额、API请求次数和Tokens的消耗都可以看到。<br><img src="/XiaoY_Web_Hexo/images/ai/036_444dee26456d4b1080245f7b67f41043.png" alt="在这里插入图片描述"></p>
+<hr>
+<h2 id="三、接入Unity使用"><a href="#三、接入Unity使用" class="headerlink" title="三、接入Unity使用"></a>三、接入Unity使用</h2><h3 id="3-1-新建Unity项目"><a href="#3-1-新建Unity项目" class="headerlink" title="3.1 新建Unity项目"></a>3.1 新建Unity项目</h3><p>使用UnityHub新建一个Unity项目，然后新建场景和脚本。<br><img src="/XiaoY_Web_Hexo/images/ai/061_79f6adbb98474031be43cfead4fa0933.png" alt="在这里插入图片描述"></p>
+<p>将脚本挂载到场景中运行查看效果。<br><img src="/XiaoY_Web_Hexo/images/ai/057_7783a2fe2c2d4a14bce73717b5136288.png" alt="在这里插入图片描述"></p>
+<p>这样就可以在Unity工程中跟DeepSeek进行对话了。</p>
+<h3 id="3-1-AI对话脚本"><a href="#3-1-AI对话脚本" class="headerlink" title="3.1 AI对话脚本"></a>3.1 AI对话脚本</h3><p>调用脚本 DeepSeekTest.cs</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DeepSeekTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        DeepSeekDialogueManager .GetInstance().SendMessageToDeepSeek(<span class="string">&quot;你好&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>核心脚本 DeepSeekDialogueManager.cs</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> Newtonsoft.Json;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.Networking;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DeepSeekDialogueManager</span>  : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> apiKey = <span class="string">&quot;此处填入申请的API密钥&quot;</span>; <span class="comment">// API密钥</span></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> apiUrl = <span class="string">&quot;https://api.deepseek.com/v1/chat/completions&quot;</span>; <span class="comment">// API请求地址</span></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> modelName = <span class="string">&quot;deepseek-chat&quot;</span>; <span class="comment">// 使用的模型名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> maxTokens = <span class="number">1024</span>; <span class="comment">// 生成的最大令牌数（控制回复长度）</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> DeepSeekDialogueManager  intance;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DeepSeekDialogueManager  <span class="title">GetInstance</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (intance == <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            intance = <span class="keyword">new</span> DeepSeekDialogueManager();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> intance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        intance = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendMessageToDeepSeek</span>(<span class="params"><span class="built_in">string</span> data</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        StartCoroutine(PostRequest(data));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">IEnumerator <span class="title">PostRequest</span>(<span class="params"><span class="built_in">string</span> message</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//创建请求体</span></span><br><span class="line">        <span class="keyword">var</span> requestBody = <span class="keyword">new</span></span><br><span class="line">        &#123;</span><br><span class="line">            model = modelName,</span><br><span class="line">            max_tokens = maxTokens,</span><br><span class="line">            messages = <span class="keyword">new</span>[]</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//new &#123; role = &quot;system&quot;, content = &quot;给模型添加信息。比如:你是一个UnityAI助手,负责Unity中的对话功能&quot; &#125;,</span></span><br><span class="line">                <span class="keyword">new</span> &#123; role = <span class="string">&quot;user&quot;</span>, content = message &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">//序列化请求体</span></span><br><span class="line">        <span class="built_in">string</span> jsonBody = JsonConvert.SerializeObject(requestBody);</span><br><span class="line">        Debug.Log(<span class="string">&quot;序列化内容。jsonBody：&quot;</span> + jsonBody);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建网络请求</span></span><br><span class="line">        UnityWebRequest request = <span class="keyword">new</span> UnityWebRequest(apiUrl, <span class="string">&quot;POST&quot;</span>);</span><br><span class="line">        <span class="built_in">byte</span>[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);</span><br><span class="line">        <span class="comment">//上传处理器</span></span><br><span class="line">        request.uploadHandler = <span class="keyword">new</span> UploadHandlerRaw(bodyRaw);</span><br><span class="line">        <span class="comment">//下载处理器</span></span><br><span class="line">        request.downloadHandler = <span class="keyword">new</span> DownloadHandlerBuffer();</span><br><span class="line">        <span class="comment">//请求头信息</span></span><br><span class="line">        request.SetRequestHeader(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/json&quot;</span>);</span><br><span class="line">        request.SetRequestHeader(<span class="string">&quot;Authorization&quot;</span>, <span class="string">&quot;Bearer &quot;</span> + apiKey);</span><br><span class="line">        <span class="comment">//发送请求</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> request.SendWebRequest();</span><br><span class="line">        <span class="keyword">if</span> (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 打印详细错误信息</span></span><br><span class="line">            Debug.LogError(<span class="string">$&quot;request: <span class="subst">&#123;request.result&#125;</span>。Error: <span class="subst">&#123;request.error&#125;</span>。Response: <span class="subst">&#123;request.downloadHandler.text&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 处理响应</span></span><br><span class="line">            <span class="built_in">string</span> responseJson = request.downloadHandler.text;</span><br><span class="line">            Debug.Log(<span class="string">&quot;Response: &quot;</span> + responseJson);</span><br><span class="line">            <span class="comment">// 解析响应</span></span><br><span class="line">            <span class="keyword">var</span> response = JsonConvert.DeserializeObject&lt;DeepSeekResponse&gt;(responseJson);</span><br><span class="line">            <span class="keyword">if</span> (response != <span class="literal">null</span> &amp;&amp; response.choices.Length &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">string</span> reply = response.choices[<span class="number">0</span>].message.content;</span><br><span class="line">                Debug.Log(<span class="string">&quot;DeepSeek says: &quot;</span> + reply);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                Debug.LogError(<span class="string">&quot;Failed to parse response.&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        request.Dispose();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义响应数据结构</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title">DeepSeekResponse</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> Choice[] choices;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title">Choice</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> Message message;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title">Message</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="3-2-搭建简易UI对话界面"><a href="#3-2-搭建简易UI对话界面" class="headerlink" title="3.2 搭建简易UI对话界面"></a>3.2 搭建简易UI对话界面</h3><p>使用InputField输入对话内容，使用Text组件接收DeepSeek回复的内容，搭建简易的对话界面。<br><img src="/XiaoY_Web_Hexo/images/ai/115_e2578af32f01491daad97e4bdd782657.png" alt="在这里插入图片描述"></p>
+<p>测试效果如下所示：<br><img src="/XiaoY_Web_Hexo/images/ai/102_c5e86159e84e49068cb89dfea1524625.gif" alt="请添加图片描述"></p>
+<h3 id="3-3-其他模型API对话接入"><a href="#3-3-其他模型API对话接入" class="headerlink" title="3.3 其他模型API对话接入"></a>3.3 其他模型API对话接入</h3><p>本文提供的脚本不止可以接入DeepSeek进行对话，还可以接入其他大模型，比如MiniMax等。</p>
+<p>只需要修改<strong>模型名称</strong>和<strong>API请求地址</strong>即可，比如使用MiniMax对话模型脚本修改如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> apiUrl = <span class="string">&quot;https://api.minimaxi.com/v1/text/chatcompletion_v2&quot;</span>; <span class="comment">// API请求地址</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> modelName = <span class="string">&quot;MiniMax-M2.5&quot;</span>; <span class="comment">// 使用的模型名称</span></span><br></pre></td></tr></table></figure>
+<p><img src="/XiaoY_Web_Hexo/images/ai/101_c4a0708ec9bb4c87a7368f8bf1a3964d.png" alt="在这里插入图片描述"></p>
+<p>不同模型使用的API请求地址和模型名称一般都不同，去对应的官方API文档查看即可。</p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>本文介绍了在Unity中接入DeepSeek以及其他大模型进行AI对话的功能。</li>
+<li>近期AI发展非常迅速，搁在ChatGPT刚出时，想接入GPT进行对话要经过很多复杂步骤。</li>
+<li>现如今只需要调用 同一个脚本，输入不同厂家的API地址即可，可谓是非常便捷了！</li>
+</ul>
+<hr>
+<blockquote>
+<ul>
+<li><p>🎬 博客主页：<a target="_blank" rel="noopener" href="https://xiaoy.blog.csdn.net/">https://xiaoy.blog.csdn.net</a></p>
+</li>
+<li><p>🎥 本文由 <strong>呆呆敲代码的小Y</strong> 原创  🙉</p>
+</li>
+<li><p>🎄 学习专栏推荐：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_10199287.html">Unity系统学习专栏</a></p>
+</li>
+<li><p>🌲 游戏制作专栏推荐：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11066124.html">游戏制作</a></p>
+</li>
+<li><p>🌲Unity实战100例专栏推荐：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11189171.html">Unity 实战100例 教程</a></p>
+</li>
+<li><p>🏅 欢迎点赞 👍 收藏 ⭐留言 📝 如有错误敬请指正！</p>
+</li>
+<li><p>📆 未来很长，值得我们全力奔赴更美好的生活✨</p>
+</li>
+<li><p>——————❤️分割线❤️————————-</p>
+</li>
+</ul>
+</blockquote>
+<p><img src="/XiaoY_Web_Hexo/images/shared/141_fca9590298da4004906d83d81f4ca0e6.gif" alt="请添加图片描述"><img src="/XiaoY_Web_Hexo/images/shared/141_fca9590298da4004906d83d81f4ca0e6.gif" alt="请添加图片描述"><img src="/XiaoY_Web_Hexo/images/shared/141_fca9590298da4004906d83d81f4ca0e6.gif" alt="请添加图片描述"></p>
+<p><img src="/XiaoY_Web_Hexo/images/shared/137_01e7ec91f0984ce4a166bf72cb52bea5.gif" alt="请添加图片描述"></p>
+<p><font color=#ff6984 size=5> <strong>资料白嫖，技术互助</strong></font></p>
+<table>
+<thead>
+<tr>
+<th align="left">学习路线指引（点击解锁）</th>
+<th>知识定位</th>
+<th>人群定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_10199287.html"><font color=#ff6984 size=4>🧡  Unity系统学习专栏 </font></a></td>
+<td>入门级</td>
+<td>本专栏从Unity入门开始学习，快速达到Unity的入门水平</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11189171.html"><font color=#ffd700 size=4>💛 Unity实战类项目 </font></a></td>
+<td>进阶级</td>
+<td>计划制作Unity的 100个实战案例！助你进入Unity世界，争取做最全的Unity原创博客大全。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11066124.html"><font color=#ee4000 size=4>❤️ 游戏制作专栏  </font></a></td>
+<td>难度偏高</td>
+<td>分享学习一些Unity成品的游戏Demo和其他语言的小游戏！</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://bbs.csdn.net/forums/unitygame"><font color=#00ee76 size=4>💚 游戏爱好者万人社区 </font></a></td>
+<td>互助&#x2F;吹水</td>
+<td>数万人游戏爱好者社区，聊天互助，白嫖奖品</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangay1998/category_11346080.html"><font color=#0099ff size=4>💙 Unity100个实用技能</font> </a></td>
+<td>Unity查漏补缺</td>
+<td>针对一些Unity中经常用到的一些小知识和技能进行学习介绍，核心目的就是让我们能够快速学习Unity的知识以达到查漏补缺</td>
+</tr>
+</tbody></table>
+<p><img src="/XiaoY_Web_Hexo/images/shared/140_9e189128b8b84061bb219b16dc424d56.gif" alt="请添加图片描述"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://gody-98.github.io/XiaoY_Web_Hexo">呆呆敲代码的小Y</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/">https://gody-98.github.io/XiaoY_Web_Hexo/2026/06/19/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://gody-98.github.io/XiaoY_Web_Hexo" target="_blank">呆呆敲代码的小Y</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/XiaoY_Web_Hexo/tags/AI/">AI</a><a class="post-meta__tags" href="/XiaoY_Web_Hexo/tags/Unity/">Unity</a><a class="post-meta__tags" href="/XiaoY_Web_Hexo/tags/DeepSeek/">DeepSeek</a></div><div class="post-share"><div class="social-share" data-image="/XiaoY_Web_Hexo/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Hello World</div></div><div class="info-2"><div class="info-item-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/Unity+AI%20%E7%94%A8%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%88%B6%E4%BD%9C%E5%AE%8C%E6%95%B4%E5%B0%8F%E6%B8%B8%E6%88%8F%EF%BC%9A%E9%A3%9E%E7%BF%94%E7%9A%84%E7%89%9B%E9%A9%AC%E3%80%90AI%E7%BA%AF%E6%B7%BB%E5%8A%A0-0%E6%89%8B%E5%B7%A5%E4%BB%A3%E7%A0%81%E3%80%91/" title="Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】</div></div><div class="info-2"><div class="info-item-1">   📢前言 之前写过文章介绍怎样使用UnityMCP+Claude进行游戏辅助开发。 本文将使用Unity引擎+Claude制作一款 AI纯添加 - 0手工代码 的小游戏：飞翔的牛马。 切实上手体验一下 不用自己手敲任何代码 和 不在游戏引擎中进行任何游戏操作 来制作一款完整的小游戏。   🎮Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】一、准备工作1.1 软件安装本文用到的所有工具如下：Unity引擎、 VSCode、Claude 关于工具的配置这里不再详细介绍，之前写过文章介绍具体配置方案：UnityMCP+Claude+VSCode，构建最强AI游戏开发环境 这些工具对于新手来说配置起来还是有些麻烦的，不过只需要配置一次后面就可以反复使用(总比直接写代码要简单很多~) 提示：若是想自己也使用AI进行游戏开发，建议按照前面这篇文章内容步骤进行实操一遍，不然许多地方可能不知道怎样操作。 1.2 使用Unity添加一个工程使用下载好的Unity引擎创建一个新项目，然后打开菜单栏Editor -&gt; Preferences ，选择使用Vis...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/05/23/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91Unity-MCP%E6%9C%80%E6%96%B0%E6%8C%87%E5%8D%97%EF%BC%9A%E8%AE%A9AI%E6%8E%A5%E7%AE%A1%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" title="【Unity-AI开发篇】Unity-MCP最新指南：让AI接管游戏开发"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-05-23</div><div class="info-item-2">【Unity-AI开发篇】Unity-MCP最新指南：让AI接管游戏开发</div></div><div class="info-2"><div class="info-item-1">   前言 在人工智能飞速发展的今天，大语言模型早已不仅限于聊天和文本生成。 它们开始能够使用工具，与环境进行交互，从而执行复杂任务。 对于广大游戏开发者而言，这意味着一个全新的范式正在到来：用自然语言驱动Unity编辑器，让AI成为我们的结对编程伙伴。 今天介绍一个工具Unity-MCP，将Unity接入AI开发游戏，解放我们的双手。   【Unity-AI开发篇】| Unity-MCP最新指南：让AI接管游戏开发一、🧐 MCP是什么？1.1 MCP介绍MCP（Model Context Protocol 模型上下文协议）可以想象成一个 AI 助手的“通用USB-C接口” 。以前，每个AI应用要连接不同的数据源或工具，都需要专门的接口。 而MCP的目标是提供一个标准化的协议，让AI助手（比如Claude、Cursor）能够通过这个“通用接口”，方便、安全地连接并操控各种软件，其中就包括Unity编辑器。 一个典型的Unity MCP实现包含两部分 ：  Unity端插件：一个安装在你的Unity项目中的包，它在Unity编辑器里启动一个本地服务器（通常通过WebSocket或...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/UnityMCP+Claude+VSCode%EF%BC%8C%E6%9E%84%E5%BB%BA%E6%9C%80%E5%BC%BAAI%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="UnityMCP+Claude+VSCode，构建最强AI游戏开发环境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">UnityMCP+Claude+VSCode，构建最强AI游戏开发环境</div></div><div class="info-2"><div class="info-item-1">   前言 本篇文章来介绍使用 UnityMCP+Claude+VSCode，打造一个更智能、高效的游戏开发工作流。 借助MCP工具，Claude可以直接与Unity编辑器进行双向指令交互，开发者则可以直接使用自然语言进行Unity游戏开发。 这一组合充分利用了AI的代码生成、问题诊断与创意辅助能力，极大提升了Unity项目的开发效率与质量。   一、UnityMCP+Claude+VSCode，构建最强AI 游戏开发环境1.1 介绍在之前文章中已经详细介绍过在使用UnityMCP之前需要做的步骤，包括MCP的安装和配置都有介绍。【Unity-AI开发篇】| Unity-MCP最新指南：让AI接管游戏开发 下面这几样还是必须安装的，这里再提一下：  Git CLI：用于克隆服务器代码。下载 Git Python：3.12 或更高版本。下载 Python Unity Hub 及编辑器：2020.3 LTS 或更高版本。下载 Unity uv（Python 包管理器）：pip install uv # 或参考：https://docs.astral.sh/uv/getting-sta...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/Unity+AI%20%E7%94%A8%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%88%B6%E4%BD%9C%E5%AE%8C%E6%95%B4%E5%B0%8F%E6%B8%B8%E6%88%8F%EF%BC%9A%E9%A3%9E%E7%BF%94%E7%9A%84%E7%89%9B%E9%A9%AC%E3%80%90AI%E7%BA%AF%E6%B7%BB%E5%8A%A0-0%E6%89%8B%E5%B7%A5%E4%BB%A3%E7%A0%81%E3%80%91/" title="Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】</div></div><div class="info-2"><div class="info-item-1">   📢前言 之前写过文章介绍怎样使用UnityMCP+Claude进行游戏辅助开发。 本文将使用Unity引擎+Claude制作一款 AI纯添加 - 0手工代码 的小游戏：飞翔的牛马。 切实上手体验一下 不用自己手敲任何代码 和 不在游戏引擎中进行任何游戏操作 来制作一款完整的小游戏。   🎮Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】一、准备工作1.1 软件安装本文用到的所有工具如下：Unity引擎、 VSCode、Claude 关于工具的配置这里不再详细介绍，之前写过文章介绍具体配置方案：UnityMCP+Claude+VSCode，构建最强AI游戏开发环境 这些工具对于新手来说配置起来还是有些麻烦的，不过只需要配置一次后面就可以反复使用(总比直接写代码要简单很多~) 提示：若是想自己也使用AI进行游戏开发，建议按照前面这篇文章内容步骤进行实操一遍，不然许多地方可能不知道怎样操作。 1.2 使用Unity添加一个工程使用下载好的Unity引擎创建一个新项目，然后打开菜单栏Editor -&gt; Preferences ，选择使用Vis...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/Blender-MCP%20+%20Claude%20Code%EF%BC%8C%E6%9E%84%E5%BB%BA%E6%9C%80%E5%BC%BAAI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E6%A8%A1%E7%8E%AF%E5%A2%83/" title="Blender-MCP + Claude Code，构建最强AI自动化建模环境"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">Blender-MCP + Claude Code，构建最强AI自动化建模环境</div></div><div class="info-2"><div class="info-item-1">   前言 本篇文章来介绍使用 Blender-MCP + Claude Code，实现AI自动化建模功能。 借助MCP工具，Claude可以直接与Blender进行双向指令交互，开发者则可以直接使用自然语言进行建模。 这一组合充分利用了AI的问题诊断与创意辅助能力，使得小白也可以用大白话直接完成建模。 在Trae中使用blender-MCP：说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试 之前还写过Unity引擎连接MCP用自然语言做游戏的教程，感兴趣的也可以看下：UnityMCP+Claude+VSCode，构建最强AI游戏开发环境   Blender-MCP + Claude Code，构建最强AI自动化建模环境🧐一、Blender - MCP1.1 介绍BlenderMCP 通过 Model Context Protocol (MCP) 将 Blender 与 Claude AI 相连接，使 Claude 能够直接与控制 Blender 进行交互。这个集成为 AI 辅助3D建模、场景创建和操作提供了强大支持。 核心功能  双向通讯：通过基...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/%E3%80%90%E6%9C%80%E6%96%B0Codex%E6%95%99%E7%A8%8B%E3%80%91%20%E5%AE%89%E8%A3%85%E3%80%81%E5%85%A5%E9%97%A8%E5%92%8C%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8%EF%BC%8C%E9%80%82%E5%90%88%E6%96%B0%E6%89%8B/" title="【最新Codex教程】 安装、入门和快速使用，适合新手"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">【最新Codex教程】 安装、入门和快速使用，适合新手</div></div><div class="info-2"><div class="info-item-1">  前言 目前AI Agent市场可谓是遍地开花，现在最火的就是OpenAI旗下的 Codex 工具了！ 老手早就各种Agent手到擒来，玩出花来的都有，而新手却连怎样安装使用都不知道~ 本文则带来Codex最新入门教程，以及快速使用方法，绕过复杂冗余的繁琐步骤，针对新手友好的教程。 让感兴趣的小伙伴可以先安装完成、然后快速体验Codex的实用功能，不讲废话直接开始。   🕹️【最新Codex教程】 | 安装、入门和快速使用，适合新手 本文基于 OpenAI 官方文档整理，实际使用以官方页面和账号内提示为准。  🧐一、 Codex 简介Codex 是 OpenAI 面向软件开发的 coding agent。它可以读取代码、修改文件、运行命令、解释项目结构、修复 bug、生成测试和辅助 code review。 官方文档提到，Codex 可以通过多种方式使用：CLI、IDE、桌面端、移动端。对新手来说，最常用的是 桌面端 和 CLI。 本文主要讲解Codex桌面端的使用方法，也是普通人最容易上手使用的一种方式，比CLI命令行器敲代码的方式要友好的多！  🚀二、安装方法在开始安...</div></div></div></a><a class="pagination-related" href="/XiaoY_Web_Hexo/2026/06/19/%E8%AF%B4%E8%AF%9D%E5%B0%B1%E8%A1%8C%EF%BC%81AI%20%E8%AE%A9%20Blender%20%E8%87%AA%E5%B7%B1%E5%8A%A8%E8%B5%B7%E6%9D%A5%EF%BC%8CBlender-MCP%E5%80%BC%E5%BE%97%E4%B8%80%E8%AF%95/" title="说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-19</div><div class="info-item-2">说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试</div></div><div class="info-2"><div class="info-item-1">   说话就行！AI 让 Blender 自己动起来，Blender-MCP值得一试 想象一下：你对着电脑说”帮我创建一个宇航员角色”，然后 Blender 自动开始建模——这不是科幻，这是正在发生的事。  前言：当我第一次”指挥”AI建模晚上躺在床上刷手机时，看到一个有趣的开源项目——Blender MCP。简介说它能让 AI 助手直接控制 Blender 进行 3D 建模。 说实话，我第一反应是：”还有这么好玩的东西？” 但作为一个 3D 建模零基础用户（以及拖延症晚期患者），我还是爬起来试了试。结果——我对着 AI 说了一句”创建一个太空飞船”，然后看着 Blender 自己动了起来，那感觉就像在施魔法。 这篇文章，就是把我的”处女体验”分享给你。  一、什么是 Blender MCP？1.1 先说 MCP 是什么MCP（Model Context Protocol） 可以理解为一个”翻译官”协议。它就像 USB 接口让不同设备能互相连接一样，MCP 让 AI 模型能够”插上”各种外部工具进行操作。 在 Blender MCP 之前，如果你想让 AI 帮你建模，通常需要： ...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/XiaoY_Web_Hexo/img/avatar.jpg" onerror="this.onerror=null;this.src='/XiaoY_Web_Hexo/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">呆呆敲代码的小Y</div><div class="author-info-description">努力前行，总会成为自己心中的那道光</div><div class="site-data"><a href="/XiaoY_Web_Hexo/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/XiaoY_Web_Hexo/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/XiaoY_Web_Hexo/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/GodY-98" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91-%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">【Unity-AI开发篇】| 游戏中接入DeepSeek实现AI对话，完整详细步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81DeepSeek"><span class="toc-number">2.1.</span> <span class="toc-text">一、DeepSeek</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2 效果展示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E8%8E%B7%E5%8F%96DeepSeek%E6%A8%A1%E5%9E%8BAPI"><span class="toc-number">2.2.</span> <span class="toc-text">二、 获取DeepSeek模型API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-API%E8%B0%83%E7%94%A8%E6%96%87%E6%A1%A3"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.1 API调用文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%8E%B7%E5%8F%96API%E5%AF%86%E9%92%A5"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2 获取API密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%A8%A1%E5%9E%8B%E4%BB%B7%E6%A0%BC"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.3 模型价格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E7%94%A8%E9%87%8F%E4%BF%A1%E6%81%AF"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.4 用量信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8E%A5%E5%85%A5Unity%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">三、接入Unity使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%96%B0%E5%BB%BAUnity%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 新建Unity项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-AI%E5%AF%B9%E8%AF%9D%E8%84%9A%E6%9C%AC"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.1 AI对话脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93UI%E5%AF%B9%E8%AF%9D%E7%95%8C%E9%9D%A2"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.2 搭建简易UI对话界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9E%8BAPI%E5%AF%B9%E8%AF%9D%E6%8E%A5%E5%85%A5"><span class="toc-number">2.3.4.</span> <span class="toc-text">3.3 其他模型API对话接入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/hello-world/" title="Hello World">Hello World</a><time datetime="2026-06-19T11:58:07.421Z" title="发表于 2026-06-19 19:58:07">2026-06-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/%E3%80%90Unity-AI%E5%BC%80%E5%8F%91%E7%AF%87%E3%80%91%20%E6%B8%B8%E6%88%8F%E4%B8%AD%E6%8E%A5%E5%85%A5DeepSeek%E5%AE%9E%E7%8E%B0AI%E5%AF%B9%E8%AF%9D%EF%BC%8C%E5%AE%8C%E6%95%B4%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" title="【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤">【Unity-AI开发篇】 游戏中接入DeepSeek实现AI对话，完整详细步骤</a><time datetime="2026-06-19T10:56:09.000Z" title="发表于 2026-06-19 18:56:09">2026-06-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/Unity+AI%20%E7%94%A8%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%88%B6%E4%BD%9C%E5%AE%8C%E6%95%B4%E5%B0%8F%E6%B8%B8%E6%88%8F%EF%BC%9A%E9%A3%9E%E7%BF%94%E7%9A%84%E7%89%9B%E9%A9%AC%E3%80%90AI%E7%BA%AF%E6%B7%BB%E5%8A%A0-0%E6%89%8B%E5%B7%A5%E4%BB%A3%E7%A0%81%E3%80%91/" title="Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】">Unity+AI 用一句话制作完整小游戏：飞翔的牛马【AI纯添加-0手工代码】</a><time datetime="2026-06-19T10:55:44.000Z" title="发表于 2026-06-19 18:55:44">2026-06-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/UnityMCP+Claude+VSCode%EF%BC%8C%E6%9E%84%E5%BB%BA%E6%9C%80%E5%BC%BAAI%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="UnityMCP+Claude+VSCode，构建最强AI游戏开发环境">UnityMCP+Claude+VSCode，构建最强AI游戏开发环境</a><time datetime="2026-06-19T10:55:16.000Z" title="发表于 2026-06-19 18:55:16">2026-06-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/XiaoY_Web_Hexo/2026/06/19/Blender-MCP%20+%20Claude%20Code%EF%BC%8C%E6%9E%84%E5%BB%BA%E6%9C%80%E5%BC%BAAI%E8%87%AA%E5%8A%A8%E5%8C%96%E5%BB%BA%E6%A8%A1%E7%8E%AF%E5%A2%83/" title="Blender-MCP + Claude Code，构建最强AI自动化建模环境">Blender-MCP + Claude Code，构建最强AI自动化建模环境</a><time datetime="2026-06-19T10:53:51.000Z" title="发表于 2026-06-19 18:53:51">2026-06-19</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By 呆呆敲代码的小Y</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/XiaoY_Web_Hexo/js/utils.js?v=5.5.5"></script><script src="/XiaoY_Web_Hexo/js/main.js?v=5.5.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/XiaoY_Web_Hexo/js/search/local-search.js?v=5.5.5"></script></div></div></body></html>
