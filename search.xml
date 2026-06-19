@@ -93,9 +93,9 @@
             
             <tag> Claude </tag>
             
-            <tag> Unity </tag>
-            
             <tag> MCP </tag>
+            
+            <tag> Unity </tag>
             
         </tags>
       
@@ -124,9 +124,9 @@
             
             <tag> Claude </tag>
             
-            <tag> MCP </tag>
-            
             <tag> Blender </tag>
+            
+            <tag> MCP </tag>
             
         </tags>
       
@@ -153,9 +153,9 @@
             
             <tag> AI </tag>
             
-            <tag> MCP </tag>
-            
             <tag> Blender </tag>
+            
+            <tag> MCP </tag>
             
         </tags>
       
@@ -249,32 +249,6 @@
     
     
     <entry>
-      <title>Test Post 2</title>
-      <link href="/XiaoY_Web_Hexo/2026/06/19/test-post2/"/>
-      <url>/XiaoY_Web_Hexo/2026/06/19/test-post2/</url>
-      
-        <content type="html"><![CDATA[<p>Test <img src="/XiaoY_Web_Hexo/images/ai/test.png" alt="img"></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Test Post</title>
-      <link href="/XiaoY_Web_Hexo/2026/06/19/test-post/"/>
-      <url>/XiaoY_Web_Hexo/2026/06/19/test-post/</url>
-      
-        <content type="html"><![CDATA[<p>Test <img src="/XiaoY_Web_Hexo/images/ai/test.png" alt="img"></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>我的第一篇博客</title>
       <link href="/XiaoY_Web_Hexo/2026/06/18/my-first-article/"/>
       <url>/XiaoY_Web_Hexo/2026/06/18/my-first-article/</url>
@@ -320,9 +294,9 @@
             
             <tag> AI </tag>
             
-            <tag> Unity </tag>
-            
             <tag> MCP </tag>
+            
+            <tag> Unity </tag>
             
         </tags>
       
